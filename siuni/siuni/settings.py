@@ -54,7 +54,7 @@ ROOT_URLCONF = 'siuni.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'siuni_site/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
