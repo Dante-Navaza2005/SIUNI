@@ -6,6 +6,10 @@
     <title>Document</title>
   </head>
   <body>
-    Davi guei
+    {% for usuario in usuarios %}
+    <p>
+      {{ usuario.nome }} - {{ usuario.tipo_de_usuario }} - {{ usuario.documento.data_nascimento }} - {{ usuario.email }}
+    </p>
+    {% endfor %}
   </body>
 </html>
