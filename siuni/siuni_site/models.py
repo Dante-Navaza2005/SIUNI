@@ -29,10 +29,20 @@ class Usuario(models.Model):
         return f'{self.nome} - {self.tipo_de_usuario}'
 
 
+class SituacaoAcademica(models.Model):
+    nPerido = models.IntegerField(default=0)
+    creditos = models.IntegerField(default=0)
+    codCurso = models.CharField(max_length=200, null=True, blank=True) #depois vincular com tabela curso
+
+    def __str__(self):
+        return f'nPeriodo {self.nPerido} - creditos {self.creditos}'
+
+
 #? para aluno e professor verificar NO FORMULARIO se realmente sao alunos e professores
 class Aluno(models.Model):
     matricula = models.CharField(max_length=7, primary_key=True)  # Matricula PK
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='aluno')
+    situacao_academica = models.OneToOneField(SituacaoAcademica, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Aluno {self.usuario.nome}'
@@ -47,5 +57,3 @@ class Professor(models.Model):
         return f'Professor {self.usuario.nome} - Coordenador {self.coordenador}'
 
 
-
-#oi
