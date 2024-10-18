@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+*{ margin: 0; padding: 0; color: white;}
+
+ul{list-style: none;}
+li{list-style: none;}
+
+body { 
+    height: 200vh; width: 100%; 
+    background-color: antiquewhite;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    }
+
+#SIUNI { 
+    height: 100%; width: 100%;
+    background-color: #000415;
+    position: relative;
+    display: flex; flex-direction: row;
+    }
+
+
+
+#BarraLateral01 {
+    height: 100vh; width: 300px;
+    position: relative;
+    }   
+#BarraLateral02 {
+    height: 100%; width: 300px;
+    position: fixed;
+    }
+#BarraLateral03 {
+    height: 100%; width: 100%;
+    background-color: #000415;
+    position: relative;
+    border-right: solid rgb(32, 32, 32) 1px;
+    }
+
+/*-----------------------------------------------------------------------------*/
+
+.BlocoLateral {
+    display: flex; flex-direction: column;  align-items: stretch; 
+
+    }
+
+#BlocoLogo01 {
+    position: absolute; width: 100%;
+    top: 20px;
+    display: flex; flex-direction: column; align-items: center;
+    }
+
+#SiuniLogo {
+    width: 80px; height: 80px;
+    background-image: url(../IMGS/SIUNI.png);
+    background-repeat: no-repeat; background-size: contain; background-position: center;
+    }
+
+
+#BlocoAbas01{
+    position: absolute; width: 100%;
+    top: 200px;
+
+    }
+
+
+#BlocoConf01 {
+    position: absolute; width: 100%;
+    bottom: 50px;
+
+    }
+
+
+/* ITEM LATERAL ------------------------------------------------------------------------------------*/
+
+.ItemLink {
+    cursor: pointer;
+    height: 50px;
+    display: flex; flex-direction: row; align-items: center;
+    }
+
+.ItemIcon {
+    height: 25px; width: 25px;
+    background-color: rgb(255, 255, 255);
+    margin: 0 0 0 20px;
+    }
+
+.ItemText {
+    margin: 0 0 0 15px;
+
+    }   
+
+
+
+
