@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+
+* { margin: 0%; padding: 0%; color: white; }
+html, body { height: 100%; width: 100%; }
+
+body { 
+    background-image: linear-gradient(to bottom, #001242, #000403);
+    font-family: "Lexend", sans-serif; font-optical-sizing: auto; font-weight: 200; font-style: normal;
+    }
+
+#BySIUNI {
+        position: fixed;
+        height: 80px; width: 80px;
+        left: 1%; top: 2%;
+        background-image: url(../IMGS/LOGO_FULL.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+
+#LOGIN { 
+    height: 100%; width: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }
+    
+#Centro {
+    height: 100%; width: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }
+
+#BlocoPrincipal {
+    height: 100%; width: 100%; max-height: 600px; 
+    display: flex; flex-direction: column ; justify-content: space-between; align-items: stretch;
+    position: absolute;
+    top: 60px;
+    }
+
+/* LOGO ------------------------------------------------------------------------------------------- */
+
+#BlocoLogo {
+    display: flex;
+    flex-direction: column; justify-content: center; align-items: center; flex: 1;
+    }
+
+#LogoPUC {
+    width: 150px; height: 150px; 
+    background-image: url(../IMGS/LogoPUC-Rio.png);
+    background-repeat: no-repeat; background-size: contain; background-position: center;
+    }
+
+/* INPUTS ----------------------------------------------------------------------------------------- */
+
+#BlocoCampos {
+    display: flex; flex-direction: column; justify-content: space-between; align-items: center; flex: 1;
+    }
+
+.Caixa {
+    width: 100%; max-width: 400px; 
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    flex: 1;
+    }
+
+input {
+    width: 100%; height: 30px;
+    position: relative;
+    background-color: transparent;
+    font-family: "Lexend", sans-serif; font-optical-sizing: auto; font-weight: 200; font-style: normal; 
+    letter-spacing: 2px;
+    font-size: 1rem;
+    color: white;
+    border: 0; border-bottom: solid white 1px;
+    }
+
+input:focus { 
+    outline: none; 
+    border-bottom: solid rgb(255, 204, 63) 1px;
+    }
+    
+@media (max-width: 600px) {
+    input { max-width: 300px; }
+    }
+
+
+/* ENVIAR ----------------------------------------------------------------------------------------- */
+
+#BlocoEnviar { flex: 1; }
+
+#CaixaEnviar {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }
+
+#BotaoEnviar {
+    cursor: pointer;
+    background-color: rgb(39, 114, 255);
+    height: 45px;
+    width: 180px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    border-radius: 20px;
+    font-weight: 300;
+    transition: 0.3s ease-in-out ;
+    }
+
+#BotaoEnviar:hover {
+    width: 190px; 
+    box-shadow: 0px 0px 40px -10px rgb(45, 77, 255);
+    }
