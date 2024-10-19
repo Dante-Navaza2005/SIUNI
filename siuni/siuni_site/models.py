@@ -1,96 +1,139 @@
 from django.db import models
 from django.contrib.auth.models import User
+from multiselectfield import MultiSelectField
+from django.db.models import UniqueConstraint
+
 
 TIPO_USUARIO_CHOICES = [
     ('Aluno', 'Aluno'),
     ('Professor', 'Professor'),
 ]
 
+DIAS_UTEIS_CHOICES = [
+        ('segunda', 'Segunda-feira'),
+        ('terca', 'Terça-feira'),
+        ('quarta', 'Quarta-feira'),
+        ('quinta', 'Quinta-feira'),
+        ('sexta', 'Sexta-feira'),
+]
 
 # Create your models here.
 
 
 class Usuario(models.Model):
-    nome = models.CharField(max_length=200, null = True, blank = True)
-    email = models.CharField(max_length=200, null = True, blank = True)
+    nome_usuario = models.CharField(max_length=200, null = True, blank = True)
+    matricula = models.CharField(max_length=200, null = True, blank = True)
+    email = models.EmailField(max_length=200, null = True, blank = True)
     telefone = models.CharField(max_length=200, null = True, blank = True)
     user = models.OneToOneField(User, null = True, blank = True, on_delete = models.CASCADE)
-    tipo_de_usuario = models.CharField(max_length=50, choices=TIPO_USUARIO_CHOICES)  # Aluno ou Professor
+    tipo_de_usuario = models.CharField(max_length=200,choices=TIPO_USUARIO_CHOICES)  # Aluno ou Professor
+    data_nascimento = models.DateField(null = True, blank = True)
 
     def __str__(self):
-        return f'{self.nome} - {self.tipo_de_usuario}'
+        return f'{self.nome_usuario} - {self.tipo_de_usuario}'
 
 
-class SituacaoAcademica(models.Model):
-    nPerido = models.IntegerField(default=0)
-    creditos = models.IntegerField(default=0)
-    codCurso = models.CharField(max_length=200, null=True, blank=True) #depois vincular com tabela curso
+class Disciplina(models.Model):
+    codigo_disciplina = models.CharField(max_length=200, null = True, blank = True)
+    nome_disciplina = models.CharField(max_length=200, null = True, blank = True)
+    departamento = models.CharField(max_length=200, null = True, blank = True)
+    criterio = models.IntegerField(default=0)
+    criterio_formula = models.ImageField(null=True, blank=True)
+    def __str__(self):
+        return f'{self.nome_disciplina} - {self.codigo_disciplina}'
+
+
+class Professor(models.Model):
+    usuario = models.OneToOneField(Usuario, null=True, blank=True,on_delete=models.CASCADE, related_name='professor')
+    coordenador = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'nPeriodo {self.nPerido} - creditos {self.creditos}'
+        return f'Professor {self.usuario.nome_usuario} - Coordenador {self.coordenador}'
+
+
+class Turma(models.Model):
+    codigo_turma = models.CharField(max_length=30, null = True, blank = True)
+    hora_inicio = models.TimeField(null = True, blank = True)
+    hora_fim = models.TimeField(null = True, blank = True)
+    dias_semana = MultiSelectField(choices=DIAS_UTEIS_CHOICES, null=True, blank=True)
+    disciplina = models.ForeignKey(Disciplina, null=True, blank=True, on_delete=models.CASCADE)
+    professor = models.ForeignKey(Professor, null=True, blank=True, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.codigo_turma} - {self.disciplina.nome_disciplina} - {self.dias_semana}'
 
 
 #? para aluno e professor verificar NO FORMULARIO se realmente sao alunos e professores
 class Aluno(models.Model):
-    matricula = models.CharField(max_length=7, primary_key=True)  # Matricula PK
-    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='aluno')
-    situacao_academica = models.OneToOneField(SituacaoAcademica, null=True, blank=True, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(Usuario, null = True, blank = True,on_delete=models.CASCADE, related_name='aluno')
+    numero_periodo = models.IntegerField(default=0, null = True, blank = True)
+    creditos_a_cumprir = models.IntegerField(default=0, null = True, blank = True)
+    curso = models.CharField(max_length=200, null = True, blank = True)
+    turmas = models.ManyToManyField(Turma, blank=True)
 
     def __str__(self):
-        return f'Aluno {self.usuario.nome}'
+        return f'Aluno {self.usuario.nome_usuario}'
     
-
-class Professor(models.Model):
-    matricula = models.CharField(max_length=7, primary_key=True)  # Matricula PK
-    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='professor')
-    coordenador = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f'Professor {self.usuario.nome} - Coordenador {self.coordenador}'
-    
-class Nota(models.Model):
-    numAvaliacao = models.IntegerField(default=0)
-    valor = models.IntegerField(default=0)
-
-    # def __str__(self):
-    #     return f'{Nota} - {valor}'
 
 
 class Avaliacao(models.Model):
-    data = models.DateField(null = True)
-    horas = models.TimeField(null = True, blank = True)
-    nSala = models.IntegerField(default=0)
-    predio = models.CharField(max_length=2, primary_key= True)
-    peso = models.IntegerField(default=0)
+    nome_avaliacao = models.CharField(max_length=200,null = True, blank = True)
+    data_avaliacao = models.DateField(null = True, blank = True)
+    hora_avaliacao = models.TimeField(null = True, blank = True)
+    sala_avaliacao = models.CharField(max_length=200,null = True, blank = True)
+    predio_avaliacao = models.CharField(max_length=200,null = True, blank = True)
+    peso_avaliacao = models.DecimalField(max_digits=3, decimal_places=1)
+    turma = models.ForeignKey(Turma, null=True, blank=True,on_delete=models.CASCADE)
+
+    class Meta:
+        constraints = [
+            UniqueConstraint(fields=['nome_avaliacao', 'data_avaliacao', 'turma'], name='unique_avaliacao_turma')
+        ]
+    
+    def __str__(self):
+        return f'{self.nome_avaliacao} - turma {self.turma.codigo_turma} - Data {self.data_avaliacao} - Predio {self.predio_avaliacao}'
 
 
-    # def __str__(self):
-    #     return f'{nSala} - {data}'
+
+
+class Nota(models.Model):
+    valor = models.DecimalField(max_digits=4, decimal_places=2)
+    avaliacao = models.ForeignKey(Avaliacao,null=True, blank=True,on_delete=models.CASCADE)
+    aluno = models.ForeignKey(Aluno,null=True, blank=True, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('avaliacao', 'aluno')
+
+    def __str__(self):
+        return f'Valor nota {self.valor} - Avaliacao {self.avaliacao.nome_avaliacao} - Disciplina {self.avaliacao.turma.disciplina} - Aluno {self.aluno.usuario.nome_usuario}'
+
 
 
 class Falta(models.Model):
-    totFaltasPerm = models.IntegerField(default=0)
-    totHorasSemestre = models.IntegerField(default=0)
-    horasFaltadas = models.IntegerField(default=0)
+    total_horas_permitidas = models.IntegerField(default=0)
+    total_horas_semestre = models.IntegerField(default=0)
+    horas_faltadas = models.IntegerField(default=0)
+    aluno = models.ForeignKey(Aluno, null=True, blank=True,on_delete=models.CASCADE)
+    turma = models.ForeignKey(Turma, null=True, blank=True, on_delete=models.CASCADE)
+    
+    class Meta:
+        unique_together = ('aluno', 'turma')  # Garante que o aluno só possa ter um registro de falta por turma
+
+    def __str__(self):
+        return f'Aluno {self.aluno.usuario.nome_usuario} - Disciplina {self.turma.disciplina.nome_disciplina} - Horas faltadas {self.horas_faltadas} - Total horas permitidas {self.total_horas_permitidas}' 
 
 
 
 class MediaFinal(models.Model):
-    g1 = models.DecimalField(default=0)
-    g2 = models.DecimalField(default=0)
-    g3 = models.DecimalField(default=0)
-    g4 = models.DecimalField(default=0)
-    mediaFinal = models.DecimalField(default=0)
-
-class Disciplina(models.Model):
-    codDisciplina = models.CharField(max_length=12, primary_key= True)
-    nomeDisciplina = models.CharField(max_length=100, primary_key= True)
-    critero = models.IntegerChoices(default=0)
-    departamento = models.CharField(max_length=100, primary_key= True)
-
-
-
-class Turma(models.Model):
-    horas = models.TimeField(null = True, blank = True)
-    data = models.DateField(null=True)
-    codTurma = models.CharField(max_length=30, primary_key=True)
+    g1 = models.DecimalField(max_digits=3, decimal_places=1)
+    g2 = models.DecimalField(max_digits=3, decimal_places=1)
+    g3 = models.DecimalField(max_digits=3, decimal_places=1)
+    g4 = models.DecimalField(max_digits=3, decimal_places=1)
+    media_final = models.DecimalField(max_digits=3, decimal_places=1)
+    aluno = models.OneToOneField(Aluno, null=True, blank=True,on_delete=models.CASCADE)
+    turma = models.OneToOneField(Turma, null=True, blank=True, on_delete=models.CASCADE)
+    
+    class Meta:
+        unique_together = ('aluno', 'turma')  # Garante que o aluno só possa ter um registro de falta por turma
+        
+    def __str__(self):
+        return f'Aluno {self.aluno.usuario.nome_usuario} - Disiplina {self.turma.disciplina.nome_disciplina} - Media Final {self.media_final}'
