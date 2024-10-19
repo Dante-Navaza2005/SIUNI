@@ -1,3 +1,0 @@
-Em base, todos as medidas são pensadas para um tela de PC 16:9 - 1920:1080
-Ajustada para outras telas com @media
-
