@@ -119,7 +119,7 @@ class Avaliacao(models.Model):
 
 
 class Nota(models.Model):
-    valor = models.DecimalField(max_digits=4, decimal_places=2)
+    valor = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     avaliacao = models.ForeignKey(Avaliacao,null=True, blank=True,on_delete=models.CASCADE)
     aluno = models.ForeignKey(Aluno,null=True, blank=True, on_delete=models.CASCADE)
 
@@ -134,7 +134,7 @@ class Nota(models.Model):
 
 
 class Falta(models.Model):
-    total_horas_permitidas = models.IntegerField(default=0)
+    total_horas_permitidas = models.IntegerField(default=0,null=True, blank=True)
     total_horas_semestre = models.IntegerField(default=0)
     horas_faltadas = models.IntegerField(default=0)
     aluno = models.ForeignKey(Aluno, null=True, blank=True,on_delete=models.CASCADE)
@@ -151,11 +151,11 @@ class Falta(models.Model):
 
 
 class MediaFinal(models.Model):
-    g1 = models.DecimalField(max_digits=3, decimal_places=1)
-    g2 = models.DecimalField(max_digits=3, decimal_places=1)
-    g3 = models.DecimalField(max_digits=3, decimal_places=1)
-    g4 = models.DecimalField(max_digits=3, decimal_places=1)
-    media_final = models.DecimalField(max_digits=3, decimal_places=1)
+    g1 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    g2 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    g3 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    g4 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    media_final = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
     aluno = models.ForeignKey(Aluno, null=True, blank=True,on_delete=models.CASCADE)
     disciplina = models.ForeignKey(Disciplina, null=True, blank=True, on_delete=models.CASCADE)
     
