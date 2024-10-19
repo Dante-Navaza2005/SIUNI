@@ -10,9 +10,9 @@
     {% if usuario.tipo_de_usuario == "Aluno" %}
         <h3>Turmas:</h3>
         <ul>
-            {% for turma in usuario.aluno.turmas.all %}
+            {% for turma in usuario.aluno.turmas.all %} <!--Botar all pq é ManytoMany-->
                 <li>Turma: {{ turma.codigo_turma }} - Disciplina: {{ turma.disciplina.nome_disciplina }} - Dias: {{ turma.get_dias_semana_display }}</li>
-            {% empty %}
+            {% empty %} <!--Se nao tiver-->
                 <li>Este aluno não está matriculado em nenhuma turma.</li>
             {% endfor %}
         </ul>
