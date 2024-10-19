@@ -1,15 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
     {% for usuario in usuarios %}
     <p>
-      {{ usuario.nome }} - {{ usuario.tipo_de_usuario }} - {{ usuario.documento.data_nascimento }} - {{ usuario.email }}
+        Nome: {{ usuario.nome_usuario }} - Tipo: {{ usuario.tipo_de_usuario }} - Email: {{ usuario.email }} - Telefone: {{ usuario.telefone }}
     </p>
+
+    {% if usuario.tipo_de_usuario == "Aluno" %}
+        <h3>Turmas:</h3>
+        <ul>
+            {% for turma in usuario.aluno.turmas.all %}
+                <li>Turma: {{ turma.codigo_turma }} - Disciplina: {{ turma.disciplina.nome_disciplina }} - Dias: {{ turma.get_dias_semana_display }}</li>
+            {% empty %}
+                <li>Este aluno não está matriculado em nenhuma turma.</li>
+            {% endfor %}
+        </ul>
+
+        <h4>Notas:</h4>
+        <ul>
+            {% for nota in notas %}
+                {% if nota.aluno.id == usuario.aluno.id %}
+                    <li>Avaliação: {{ nota.avaliacao.nome_avaliacao }} - Disciplina: {{ nota.avaliacao.turma.disciplina.nome_disciplina }} - Nota: {{ nota.valor }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h4>Média Final:</h4>
+        <ul>
+            {% for media in medias_finais %}
+                {% if media.aluno.id == usuario.aluno.id %}
+                    <li>Disciplina: {{ media.disciplina.nome_disciplina }} - Média Final: {{ media.media_final }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h4>Faltas:</h4>
+        <ul>
+            {% for falta in faltas %}
+                {% if falta.aluno.id == usuario.aluno.id %}
+                    <li>Disciplina: {{ falta.disciplina.nome_disciplina }} - Horas Faltadas: {{ falta.horas_faltadas }} - Total Permitido: {{ falta.total_horas_permitidas }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+    {% elif usuario.tipo_de_usuario == "Professor" %}
+        <h3>Professor</h3>
+        <ul>
+            <li>Coordenador: {{ usuario.professor.coordenador }}</li>
+            <li>Turmas:</li>
+            <ul>
+                {% for turma in turmas %}
+                    {% if turma.professor.id == usuario.professor.id %}
+                        <li>Turma: {{ turma.codigo_turma }} - Disciplina: {{ turma.disciplina.nome_disciplina }} - Dias: {{ turma.get_dias_semana_display }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </ul>
+    {% endif %}
+    <hr>
     {% endfor %}
-  </body>
-</html>
+{% endblock %}
