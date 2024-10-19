@@ -30,7 +30,7 @@
         <ul>
             {% for media in medias_finais %}
                 {% if media.aluno.id == usuario.aluno.id %}
-                    <li>Disciplina: {{ media.turma.disciplina.nome_disciplina }} - Média Final: {{ media.media_final }}</li>
+                    <li>Disciplina: {{ media.disciplina.nome_disciplina }} - Média Final: {{ media.media_final }}</li>
                 {% endif %}
             {% endfor %}
         </ul>
@@ -39,7 +39,7 @@
         <ul>
             {% for falta in faltas %}
                 {% if falta.aluno.id == usuario.aluno.id %}
-                    <li>Disciplina: {{ falta.turma.disciplina.nome_disciplina }} - Horas Faltadas: {{ falta.horas_faltadas }} - Total Permitido: {{ falta.total_horas_permitidas }}</li>
+                    <li>Disciplina: {{ falta.disciplina.nome_disciplina }} - Horas Faltadas: {{ falta.horas_faltadas }} - Total Permitido: {{ falta.total_horas_permitidas }}</li>
                 {% endif %}
             {% endfor %}
         </ul>
