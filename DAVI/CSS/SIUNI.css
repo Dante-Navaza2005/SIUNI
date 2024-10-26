@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 
 *{ margin: 0; padding: 0; color: white;}
 
@@ -47,29 +50,71 @@ body {
 
     }
 
-#BlocoLogo01 {
-    position: absolute; width: 100%;
-    top: 20px;
-    display: flex; flex-direction: column; align-items: center;
+
+/* LOGO ------------------------------------------------------------------------------------------- */
+#BlocoLogo {
+    position: relative; top: 20px;
+    width: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: "Inter", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; letter-spacing: 2px; 
+    }
+    
+#SiuniArea {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+
+}
+
+#SiuniArea:hover #PaiSiuniText #SiuniText {
+    left: 0%;
+
     }
 
 #SiuniLogo {
-    width: 80px; height: 80px;
-    background-image: url(../IMGS/SIUNI.png);
+    position: relative;
+    background-image: url(../IMGS/LOGO_FULL.png);
     background-repeat: no-repeat; background-size: contain; background-position: center;
+    width: 80px; height: 80px;
     }
 
 
-#BlocoAbas01{
+#PaiSiuniText {
+    cursor: pointer;
+    position: relative;
+    font-size: 2.5rem; font-weight: 800;
+    overflow: hidden;
+    }
+
+#PaiSiuniText::after {
+    content: 'SIUNI';
+    color: transparent;
+    }
+
+#SiuniText {
+    position: absolute;
+    transition: 0.5s;
+    left: -100%;
+    }
+
+
+
+
+
+
+
+
+
+
+#BlocoAbas{
     position: absolute; width: 100%;
     top: 200px;
-
+    display: flex; flex-direction: column; align-items: center;
     }
 
 
 #BlocoConf01 {
+    display: flex; flex-direction: column; align-items: center;
     position: absolute; width: 100%;
-    bottom: 50px;
+    bottom: 20px;
 
     }
 
@@ -77,22 +122,29 @@ body {
 /* ITEM LATERAL ------------------------------------------------------------------------------------*/
 
 .ItemLink {
+    font-size: 1rem;
     cursor: pointer;
-    height: 50px;
+    height: 50px; width: 95%;
+    margin-top: 5px; margin-bottom: 5px;
     display: flex; flex-direction: row; align-items: center;
+    border-radius: 10px;
+    transition: 0.3s;
     }
+
+.ItemLink:hover { background-color: rgba(255, 255, 255, 0.1); }
+
+.ItemLink:hover i { transform: scale(1.1); }
 
 .ItemIcon {
-    height: 25px; width: 25px;
-    background-color: rgb(255, 255, 255);
-    margin: 0 0 0 20px;
+    margin-left: 15px;
+    display: flex; justify-content: center; align-items: center;
     }
 
-.ItemText {
-    margin: 0 0 0 15px;
+.ItemText { margin: 0 0 0 15px; }   
 
-    }   
+i {
+    font-size: 1.6rem;
+    transition: 0.3s;
 
-
-
+}
 

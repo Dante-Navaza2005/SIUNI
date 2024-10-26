@@ -1,3 +1,14 @@
 Em base, todos as medidas são pensadas para um tela de PC 16:9 - 1920:1080
 Ajustada para outras telas com @media
 
+
+
+
+
+
+FONTES IMPORTADAS
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+
+
