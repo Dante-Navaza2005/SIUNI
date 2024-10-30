@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../CSS/Login.css">
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
     <div id="LOGIN">
-    
         <div id="BySIUNI" class="surgindo" >
             <div id="LogoSIUNI"></div>
             <p id="TextSIUNI">SIUNI</p>
@@ -34,13 +29,9 @@
                         <div id="BotaoEnviar">Enviar</div>
                     </div>
                 </div>
-                
             </div>
-    
-    
     </div>
 
     <script src="https://kit.fontawesome.com/f196a55506.js" crossorigin="anonymous"></script> <!-- ICONES -->
-    <script src="../JS/Login.js"></script>
-</body>
-</html>
+    <script src={% static 'js/login.js '%}></script>
+{% endblock %}

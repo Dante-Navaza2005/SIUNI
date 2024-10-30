@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block body %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
     {% for usuario in usuarios %}
     <p>
         Nome: {{ usuario.nome_usuario }} - Tipo: {{ usuario.tipo_de_usuario }} - Email: {{ usuario.email }} - Telefone: {{ usuario.telefone }}
