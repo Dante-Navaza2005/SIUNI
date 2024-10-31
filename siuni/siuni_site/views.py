@@ -2,6 +2,12 @@ from django.shortcuts import render
 from .models import *
 
 # Create your views here.
+
+def fazer_login(request) :
+    context = {}
+    return render(request, 'login.html', context)
+
+
 def homepage(request):
     # Obter todos os usuários e as informações associadas
     usuarios = Usuario.objects.select_related('aluno', 'professor').all()
