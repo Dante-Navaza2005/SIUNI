@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIU SIU</title>
+
+    <style>
+
+        *{ margin: 0; padding: 0; color: rgb(0, 0, 0);}
+        html { width: 100%; height: 100%; }
+        body {
+            height: 100%; width: 100%; 
+            background-color: black;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            }
+
+        #BlocoPai {
+            height: 300px; width: 300px;
+            border: 1px solid white;
+            position: absolute;
+
+            }
+        
+        #BlocoFilho {
+            height: 40px; width: 40px;
+            background-color: rgb(255, 145, 0);
+            position: absolute;
+            transition: 1s ease;
+            }
+
+    </style>
+
+</head>
+<body>
+<!-- HTML ----------------------------------------------------------------------------------------->
+    
+
+<div id="BlocoPai">
+
+    <div id="BlocoFilho"></div>
+    
+</div>
+
+
+<!-- SCRIPT --------------------------------------------------------------------------------------->
+<script>
+
+    const BlocoPai = document.getElementById("BlocoPai")
+    const LarguraBPai = BlocoPai.offsetWidth
+    const AlturaBPai = BlocoPai.offsetHeight
+        
+    const BlocoFilho = document.getElementById("BlocoFilho")
+    const LarguraBFilho = BlocoFilho.offsetWidth
+    const AlturaBFilho = BlocoFilho.offsetHeight
+
+    const LarguraTela = window.innerWidth
+    const AlturaTela = window.innerHeight
+
+    console.log(`Largura:${LarguraTela} Altura:${AlturaTela}`)
+
+    const rect = BlocoPai.getBoundingClientRect();
+    const L = rect.left;
+    const R = rect.top;
+
+    var PROPX = LarguraTela / LarguraBPai
+    var PROPY = AlturaTela / AlturaBPai
+
+    document.addEventListener("mousemove", (event)=>{
+        var MouseX = event.clientX
+        var MouseY = event.clientY
+
+        // var PosXBFilho = (MouseX / LarguraTela) * 100
+        // var PosYBFilho = (MouseY / AlturaTela)  * 100
+        // BlocoFilho.style.left = `calc(${PosXBFilho}% - ${LarguraBFilho/2}px)`
+        // BlocoFilho.style.top  = `calc(${PosYBFilho}% - ${AlturaBFilho /2}px)`
+
+        var PosXBFilho = MouseX/PROPX - (LarguraBFilho/2)
+        var PosYBFilho = MouseY/PROPY - (AlturaBFilho/2)
+
+        BlocoFilho.style.left = `${PosXBFilho}px`
+        BlocoFilho.style.top  = `${PosYBFilho}px`
+
+
+
+        //console.log(`X:${MouseX} Y:${MouseY}`)
+        })
+
+
+
+
+
+
+
+
+        let throttleTimeout;
+
+function onMouseMove(event) {
+    if (!throttleTimeout) {
+        // Manipule o movimento do mouse aqui
+        console.log("Mouse X:", event.clientX, "Mouse Y:", event.clientY);
+
+        throttleTimeout = setTimeout(() => { throttleTimeout = null; }, 100); 
+    }
+}
+
+document.addEventListener("mousemove", onMouseMove);
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

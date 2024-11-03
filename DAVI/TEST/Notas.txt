@@ -1,0 +1,26 @@
+
+// ESCONDER
+elemento::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
+}
+
+div#AreaDeAbas::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem */
+}
+
+/* Estilizar o "track" (fundo da barra de rolagem) */
+div#AreaDeAbas::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Estilizar o "thumb" (a parte que você pode arrastar) */
+div#AreaDeAbas::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+}
+
+/* Adiciona efeito ao passar o mouse */
+div#AreaDeAbas::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+

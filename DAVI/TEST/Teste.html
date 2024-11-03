@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        * {
+            margin: 0; padding: 0;
+        }
+        html{ height: 100%; width: 100%; background-color: aquamarine;}
+        body { height: 100%; background-color: blueviolet;
+
+        }
+
+        div {
+            height: 200%; width: 500px;
+            background-color: rgba(0, 0, 0, 0.384);
+        }
+
+    </style>
+
+</head>
+<body id="body">
+    
+    <div id="div"></div >
+
+
+    <script>
+
+        var html = document.getElementById("html")
+        var body = document.getElementById("body")
+        var div = document.getElementById("div")
+
+        console.log(`HTML: ${html.scrollHeight} ${html.offsetWidth}`)
+        console.log(`BODY: ${body.scrollHeight} ${body.offsetWidth}`)
+        console.log(`DIV:  ${div.scrollHeight} ${div.offsetWidth}`)
+
+    </script>
+
+</body>
+</html>

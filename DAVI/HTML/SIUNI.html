@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" id="html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIUNI</title>
+
     <link rel="stylesheet" href="../CSS/SIUNI.css">
-
+    <link rel="stylesheet" href="../CSS/Perfil.css">
+    <link rel="stylesheet" href="../CSS/PucAgora.css">
+    <link rel="stylesheet" href="../CSS/CalendarioPuc.css">
+    <link rel="stylesheet" href="../CSS/MeuCurso.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-
-
+ 
 </head>
-<body>
+<body id="body">
     <div id="SIUNI"> <!-- SIUNI ------------------------------------------------------------------------------------------------------------------>
-    
+     
         <div id="BarraLateral01">
             <div id="BarraLateral02">
                 <div id="BarraLateral03">
@@ -27,7 +30,6 @@
                         </div>
                     </div>
 
-
                     <div id="BlocoAbas" class="BlocoLateral">
                         <div class="ItemLink" onclick="LoadPageContent('Perfil.html', event)">     <div class="ItemIcon"> <i class="bi bi-person-circle"></i>  </div> <p class="ItemText">Perfil</p>     </div>
                         <div class="ItemLink" onclick="LoadPageContent('PucAgora.html', event)" >  <div class="ItemIcon"> <i class="bi bi-newspaper"></i>      </div> <p class="ItemText">Puc Agora</p>  </div>
@@ -35,23 +37,26 @@
                         <div class="ItemLink" onclick="LoadPageContent('Calendario.html', event)"> <div class="ItemIcon"> <i class="bi bi-calendar3"></i>      </div> <p class="ItemText">Calendário</p> </div>
                     </div>
 
-
                     <div id="BlocoConf01" class="BlocoLateral">
                         <div class="ItemLink"> <div class="ItemIcon"><i class="bi bi-list"></i></div> <p class="ItemText"></p> Configurações </div>
-                    </div>
-
-                    
+                    </div>            
                 </div>
             </div>
         </div>
         
-        
-    
+
         <div id="Conteudo" >SIUNI IS HERE</div>
         
+
     </div> <!-- /SIUNI ------------------------------------------------------------------------------------------------------------------------------>
     <script src="https://kit.fontawesome.com/f196a55506.js" crossorigin="anonymous"></script> <!-- ICONES -->
     <script src="../JS/SIUNI.js"></script>
+    <script src="../JS/Perfil.js"></script>
+    <script src="../JS/PucAgora.js"></script>
+    <script src="../JS/MeuCurso.js"></script>
+    <script src="../JS/CalendarioPuc.js"></script>
+
+
 
 </body>
 </html>
