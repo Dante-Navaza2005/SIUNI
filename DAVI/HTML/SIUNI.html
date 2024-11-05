@@ -15,39 +15,42 @@
 </head>
 <body id="body">
     <div id="SIUNI"> <!-- SIUNI ------------------------------------------------------------------------------------------------------------------>
-     
-        <div id="BarraLateral01">
-            <div id="BarraLateral02">
-                <div id="BarraLateral03">
+        
+        <div id="BarraConfiguracoes"> <div class="ItemIcon" id="IconConf" ><i class="bi bi-list"></i></div>  </div> <!-- CELULAR VIEW-->
 
-                    <div id="BlocoLogo" class="BlocoLateral" >
-                        <div id="SiuniArea">
-                            <div id="SiuniLogo">
-                            </div>
-                            <div id="PaiSiuniText">
-                                <div id="SiuniText">SIUNI</div>
-                            </div>
-                        </div>
+        <div id="BarraLateral"></div> <!-- Barra que ocupa o espaço na main -->
+
+        <div id="BarraFixa"> <!-- Barra fixa de ocupação -->
+            <div id="BarraReal"> <!-- Barra com conteúdo -->
+
+                <div id="BlocoLogo" class="BlocoDaBarra" >
+                    <div id="SiuniArea">
+                        <div id="SiuniLogo"> </div>
+                        <div id="PaiSiuniText"> <div id="SiuniText">SIUNI</div> </div>
                     </div>
-
-                    <div id="BlocoAbas" class="BlocoLateral">
-                        <div class="ItemLink" onclick="LoadPageContent('Perfil.html', event)">     <div class="ItemIcon"> <i class="bi bi-person-circle"></i>  </div> <p class="ItemText">Perfil</p>     </div>
-                        <div class="ItemLink" onclick="LoadPageContent('PucAgora.html', event)" >  <div class="ItemIcon"> <i class="bi bi-newspaper"></i>      </div> <p class="ItemText">Puc Agora</p>  </div>
-                        <div class="ItemLink" onclick="LoadPageContent('MeuCurso.html', event)">   <div class="ItemIcon"> <i class="bi bi-heart"></i>          </div> <p class="ItemText">Meu Curso</p>  </div>
-                        <div class="ItemLink" onclick="LoadPageContent('Calendario.html', event)"> <div class="ItemIcon"> <i class="bi bi-calendar3"></i>      </div> <p class="ItemText">Calendário</p> </div>
-                    </div>
-
-                    <div id="BlocoConf01" class="BlocoLateral">
-                        <div class="ItemLink"> <div class="ItemIcon"><i class="bi bi-list"></i></div> <p class="ItemText"></p> Configurações </div>
-                    </div>       
-                         
                 </div>
+
+                <div id="BlocoAbas" class="BlocoDaBarra">
+                    <div class="ItemLink" onclick="LoadPageContent('Perfil.html', event)">     <div class="ItemIcon"> <i class="bi bi-person-circle"></i>  </div> <p class="ItemText">Perfil</p>     </div>
+                    <div class="ItemLink" onclick="LoadPageContent('PucAgora.html', event)" >  <div class="ItemIcon"> <i class="bi bi-newspaper"></i>      </div> <p class="ItemText">Puc Agora</p>  </div>
+                    <div class="ItemLink" onclick="LoadPageContent('MeuCurso.html', event)">   <div class="ItemIcon"> <i class="bi bi-heart"></i>          </div> <p class="ItemText">Meu Curso</p>  </div>
+                    <div class="ItemLink" onclick="LoadPageContent('Calendario.html', event)"> <div class="ItemIcon"> <i class="bi bi-calendar3"></i>      </div> <p class="ItemText">Calendário</p> </div>
+                </div>
+
+                <div id="BlocoConfiguracoes" class="BlocoDaBarra">
+                    <div class="ItemLink"> <div class="ItemIcon"><i class="bi bi-list"></i></div> <p class="ItemText"> Configurações </p></div>
+                </div>       
+                        
             </div>
         </div>
+    
         
 
         <div id="Conteudo" >SIUNI IS HERE</div>
         
+        <div id="BarraInferior"></div> <!-- CELULAR VIEW-->
+
+
 
     </div> <!-- /SIUNI ------------------------------------------------------------------------------------------------------------------------------>
     <script src="https://kit.fontawesome.com/f196a55506.js" crossorigin="anonymous"></script> <!-- ICONES -->

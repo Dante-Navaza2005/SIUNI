@@ -2,87 +2,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* VARIÁVEIS --------------------------------------------------------------------------------------*/
-
-
 :root {
     --cor-primaria: #15ff00;
     --largura-container: 1200px;
     --padding: 16px;
+    --BarraInferiorHeight: 50px;
+    --BarraConfiguracoesHeight: 40px;
+
   }
 
 
-*{ margin: 0; padding: 0; color: white;}
- 
-html { height: 100%; width: 100%; }
+/* INICIAL ======================================================================================== */
+* { margin: 0; padding: 0; color: white;}
 
+html { height: 100%; width: 100%; }
 
 body { 
     height: 100%; width: 100%; 
     background-color: rgb(0, 26, 255);
-    font-family: "Work Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: 300;
+    background-color: #000415;
+    font-family: "Work Sans", sans-serif; font-optical-sizing: auto; font-style: normal; font-weight: 300;
     }
 
+/* ELEMENTO MAIN ---------------------------------------------------------------------------------- */
+    
 #SIUNI { 
     height: 100%; width: 100%;
     background-color: #000415;
     position: relative;
-    display: flex; flex-direction: row;
+    display: flex; flex-direction: row; align-items: stretch;
+    overflow: hidden;
 }
 
 
+
 /* CONTEUDO --------------------------------------------------------------------------------------- */
+
 #Conteudo { 
     flex: 1; height: 100%;
     box-sizing: border-box;
     overflow: hidden;
-
-    }
+}
 
 
 /* BARRA LATERAL ---------------------------------------------------------------------------------- */
 
-#BarraLateral01 {
+
+#BarraLateral {
     height: 100vh; width: 300px;
     position: relative;
-    }   
-#BarraLateral02 {
+}   
+
+#BarraFixa {
     height: 100%; width: 300px;
     position: fixed;
-    }
-#BarraLateral03 {
+}
+
+#BarraReal {
     height: 100%; width: 100%;
-    background-color: #000415;
     position: relative;
     border-right: solid rgb(32, 32, 32) 1px;
     box-sizing: border-box;
-
     }
 
-/*-----------------------------------------------------------------------------*/
+#BarraConfiguracoes { display: none; }
 
-.BlocoLateral {
+/* ELEMENTOS DENTRO DA BARRA ---------------------------------------------------------------------- */
+
+.BlocoDaBarra {
     display: flex; flex-direction: column;  align-items: stretch; 
     }
 
+/* LOGO ========================================= */
 
-/* LOGO ------------------------------------------------------------------------------------------- */
 #BlocoLogo {
-    position: relative; top: 20px;
+    position: absolute; top: 20px;
     width: 100%;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     font-family: "Inter", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; letter-spacing: 2px; 
     }
 
-#SiuniArea {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-}
-
-#SiuniArea:hover #PaiSiuniText #SiuniText {
-    left: 0%;
-    }
+#SiuniArea { display: flex; flex-direction: column; justify-content: center; align-items: center; }
 
 #SiuniLogo {
     position: relative;
@@ -91,6 +91,7 @@ body {
     width: 80px; height: 80px;
     }
 
+#SiuniArea:hover #PaiSiuniText #SiuniText { left: 0%; }
 
 #PaiSiuniText {
     cursor: pointer;
@@ -110,19 +111,23 @@ body {
     left: -100%;
     }
 
+/* ABAS ========================================= */
+
 #BlocoAbas{
+    display: flex; flex-direction: column; align-items: center;
     position: absolute; width: 100%;
     top: 200px;
-    display: flex; flex-direction: column; align-items: center;
     }
 
-#BlocoConf01 {
+/* CONFIGURACOES  =============================== */
+
+#BlocoConfiguracoes {
     display: flex; flex-direction: column; align-items: center;
     position: absolute; width: 100%;
     bottom: 20px;
     }
 
-/* ITEM LATERAL ------------------------------------------------------------------------------------*/
+/* ITEM LATERAL */
 
 .ItemLink {
     font-size: 1rem;
@@ -133,11 +138,7 @@ body {
     border-radius: 10px;
     transition: 0.3s;
     }
-
-.ItemLink:hover { background-color: rgba(255, 255, 255, 0.1); }
-
-.ItemLink:hover i { transform: scale(1.1); }
-
+    
 .ItemIcon {
     margin-left: 15px;
     display: flex; justify-content: center; align-items: center;
@@ -148,7 +149,105 @@ body {
 i {
     font-size: 1.6rem;
     transition: 0.3s;
+    }
+    
+.ItemLink:hover { background-color: rgba(255, 255, 255, 0.1); }
+.ItemLink:hover i { transform: scale(1.1); }
 
+
+
+
+
+
+
+
+
+/* RESPONSIVIDADE --------------------------------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+    
+/*Barra lateral Esquerda -> Barra inferior*/
+#SIUNI {
+    flex-direction: column; align-items: stretch;
+    }
+
+#Conteudo {
+    all: unset;
+    flex: 1; overflow: hidden;
+    flex-shrink: 0;
+    }
+
+
+#BarraLateral { display: none; }
+
+#BarraInferior {
+    position: relative;
+    bottom: 0;
+    width: 100%; height: var(--BarraInferiorHeight);
+    }
+
+#BarraFixa {
+    width: 100%; height: var(--BarraInferiorHeight);
+    bottom: 0;
+    z-index: 1;
+    }
+
+#BarraReal {
+    position: relative;
+    width: 100%; height: 100%; 
+    box-sizing: border-box; border-right: none;
+    border-top: 1px solid rgb(32, 32, 32);
+    }
+
+#BlocoLogo { display: none; }
+#BlocoConfiguracoes { display: none; }
+
+#BlocoAbas {
+    all: unset;
+    width: 100%; height: 100%;
+    display: flex; flex-direction: row; justify-content: space-around; align-items: center;
+
+    }
+
+/* ITEM ========================================================= */
+.ItemLink {
+    all: unset;
+
+    }   
+
+.ItemIcon {
+    all: unset;
+    }
+
+
+i {
+    all: unset;
+    font-size: 1.6rem;
+
+    }
+    
+
+.ItemText { display: none; }
+
+/* CONFIGURAÇÔES ------------------------------------------------------------------------------*/
+
+
+#BarraConfiguracoes {
+    all: unset;
+    box-sizing: border-box; 
+    height: var(--BarraConfiguracoesHeight); width: 100%;
+    display: flex; flex-direction: row; justify-content: flex-end; align-items: center;
+    padding-right: 5px;
+    border-bottom: 1px solid rgb(54, 54, 54);
+    }
+
+#BarraConfiguracoes #IconConf i {
+    font-size: 2rem;    
+    }
+
+    
 }
+
+
 
 
