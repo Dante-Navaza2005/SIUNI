@@ -8,7 +8,6 @@ div#CalendarioPuc {
 
 div#CalendarioCampoCentral {
     box-sizing: border-box;  
-    border: 1px solid rgb(255, 255, 255);
     height: 100%; 
     width: 1200px;
     width: 90%;
@@ -91,13 +90,13 @@ div#CalendarioInferior > *:first-child {
     display: none;
 
     }
-
+ 
 /* Evento -----------------------------------------------------------------------------------------*/
 .Evento {
     cursor: pointer;
     box-sizing: border-box;  
     border: 1px solid #5271ff;  border-radius: 15px;
-    background-color: #070f3e;
+    background-color: var(--EventoBackgroundColor);
     padding: 5px 10px;
     position: relative;
     display: flex;  flex-direction: column; justify-content: space-around; align-items: center;

@@ -19,7 +19,6 @@ div#CampoPrincipal {
     box-sizing: border-box; 
     overflow-y: hidden; 
     display: flex; flex-direction: row;
-    border: 1px solid pink;
     }
 
 
@@ -44,7 +43,7 @@ div.ABA {
     font-weight: 400;
     padding: 7px;
     cursor: pointer;
-    background-color: #070f3e;
+    background-color: var(--BackgroundColorB);
     box-sizing: border-box;
     border-radius: 10px;
     display: flex; flex-direction: row; justify-content: center; align-items: center;
@@ -101,7 +100,7 @@ div#AreaDeConteudo::-webkit-scrollbar {
 .NotDescricao {
     font-size: 0.95rem;
     font-weight: 350;
-    color: rgb(230, 230, 230);    
+    color: var(--DescricaoColor);    
     }
 
 .NotFonte {
@@ -121,7 +120,7 @@ div#BlocoDireito {
 
 div#AreaDeInformacoes {
     width: 80%; 
-    background-color: #070f3e;
+    background-color: var(--BackgroundColorB);
     margin-top: 40px; margin-bottom: 40px;
     box-sizing: border-box;
     padding: 20px;
