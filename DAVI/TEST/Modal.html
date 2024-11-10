@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal Fullscreen</title>
+<style>
+.modal {
+  display: none; /* Inicialmente escondido */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro */
+  z-index: 1; /* Fica acima do conteúdo da página */
+  overflow: auto; /* Permite rolar caso o conteúdo do modal seja maior que a tela */
+}
+
+/* Conteúdo do Modal */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px; /* Tamanho máximo do modal */
+  text-align: center;
+}
+
+/* Botão de fechar */
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+</style>
+
+  
+</head>
+<body>
+
+  <button id="openModal">Abrir Modal</button>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Este é um modal fullscreen!</h2>
+      <p>Conteúdo do modal...</p>
+    </div>
+  </div>
+
+  <script>
+// Pegar o modal e o botão de abrir
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("openModal");
+var span = document.getElementsByClassName("close")[0];
+
+// Quando o botão é clicado, exibe o modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// Quando o usuário clica no botão de fechar, fecha o modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Quando o usuário clica fora do modal, fecha o modal
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+  </script>
+</body>
+</html>

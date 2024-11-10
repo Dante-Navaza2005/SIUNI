@@ -1,5 +1,4 @@
 
-
 function AdicionarNoticia() {
     let Noticia = document.createElement('div')
     fetch('../HTML/Noticia.html')
@@ -14,8 +13,20 @@ function AdicionarNoticia() {
 
 
 
+// ConteudoNoticia = document.getElementById("ConteudoNoticia")
+
+// ModalNoticia    = document.getElementById("ModalNoticia")
+// BotaoFechar     = document.getElementById("Noticia-IconCloseButton")
 
 
+// function AbrirNoticia() {
+//     ModalNoticia.style.display = 'flex'
+//     }
 
 
+// BotaoFechar.onclick = function() { ModalNoticia.style.display = 'none' }
+
+// window.addEventListener('click', (event) => {
+//     if (event.target == ModalNoticia) { ModalNoticia.style.display = 'none' }
+//     }  )
 

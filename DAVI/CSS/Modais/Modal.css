@@ -1,0 +1,56 @@
+/* MODAL SIUNI ==================================================================================== */
+
+.MODAL {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    display: flex;
+    }
+
+.MODAL_CampoPrincipal {
+    background-color: white;
+    height: 80%; width: 80%;
+    border-radius: 20px ;
+    position: absolute;
+    overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    }
+
+.MODAL_BarraDeFechamento {
+    height: 35px;
+    display: flex; flex-direction: row; align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(185, 185, 185);
+    position: relative;
+    }
+
+.MODAL_BarraDeFechamento i {
+    font-size: 1.4rem;
+    position: absolute;
+    right: 5px; top: 5px;
+    cursor: pointer;
+    color: rgb(150, 150, 150);
+    }
+
+.MODAL_BarraDeFechamento i:hover {
+    color: red;
+
+    }
+
+.MODAL_Conteudo {
+    flex-shrink: 0;
+    flex: 1;
+    overflow: auto;
+    color: black;
+    box-sizing: border-box;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+    }
+
+
+
+

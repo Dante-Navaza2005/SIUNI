@@ -1,11 +1,10 @@
 
 :root 
     {
-
     /* MAIN =============================================== */
     --BackgroundColor: #000415;
     --FontColor: white;
-    --FontWeight: 300;
+    --FontWeight: 400;
     --HoverItemBackgroundColor: rgba(255, 255, 255, 0.1);
     
     /* OPTIONS ============================================ */
@@ -44,8 +43,6 @@
 
     /* CALENDARIO ========================================= */
     --EventoBackgroundColor: rgb(224, 224, 224);
-
-
     
     }
 
@@ -54,12 +51,7 @@
 
 
 
-.HIDDEN {
-    display: none;
-
-    }
-
-
+.HIDDEN { display: none; }
 
 
 

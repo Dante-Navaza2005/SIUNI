@@ -100,9 +100,8 @@ body {
 
 i {
     font-size: 1.6rem;
-    transition: 0.2s;
     }
-    
+     
 .ItemDaBarra:hover { background-color: var(--HoverItemBackgroundColor); }
 .ItemDaBarra:hover i { transform: scale(1.1); }
     
@@ -235,7 +234,9 @@ i {
 #BarraFixa {
     width: 100%; height: var(--BarraInferiorHeight);
     bottom: 0;
-    z-index: 1;
+    z-index: 100;
+    background-color: var(--BackgroundColor);
+    
     }
 
 #BarraReal {
@@ -243,6 +244,7 @@ i {
     width: 100%; height: 100%; 
     box-sizing: border-box; border-right: none;
     border-top: 1px solid rgb(32, 32, 32);
+
     }
 
 #BlocoLogo { display: none; }
@@ -256,7 +258,7 @@ i {
     }
 
 /* ITEM ========================================================= */
-.ItemLink {
+.ItemDaBarra {
     all: unset;
 
     }   

@@ -15,16 +15,7 @@ function LoadPageContent(Page, event) {
     botaoAtual.style.backgroundColor = 'var(--HoverItemBackgroundColor)';
     botaoAnterior = botaoAtual;
 
-
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -35,10 +26,10 @@ var Conteudo = document.getElementById("Conteudo")
 var Altura = Conteudo.offsetHeight
 var Largura = Conteudo.offsetWidth
 
-console.log(`${Altura}`)
-console.log(`${Largura}`)
-console.log("Largura da tela: " + window.innerWidth + "px");
-console.log("Altura da tela: " + window.innerHeight + "px");
+// console.log(`${Altura}`)
+// console.log(`${Largura}`)
+// console.log("Largura da tela: " + window.innerWidth + "px");
+// console.log("Altura da tela: " + window.innerHeight + "px");
 
 var CANVAS = document.getElementById("Canvas")
 
@@ -64,7 +55,7 @@ function DesenhaBola() {
 let animacaoBola;
 
 function AnimaBola() {
-    console.log("anima")
+    // console.log("anima")
     context.clearRect(0, 0, Largura, Altura);
     DesenhaBola()
     
