@@ -53,7 +53,7 @@ body {
 
 #LogoPUC {
     width: 150px; height: 150px; 
-    background-image: url(../IMGS/LogoPUC-Rio.png);
+    background-image: url("/static/images/LogoPUC-Rio.png");
     background-repeat: no-repeat; background-size: contain; background-position: center;
     }
 
@@ -92,8 +92,6 @@ body {
     
 
 
-
-    
 /* ENVIAR ----------------------------------------------------------------------------------------- */
 
 #BlocoEnviar { 
@@ -117,7 +115,9 @@ body {
 
 #BotaoEnviar:hover {
     width: 190px; 
-    box-shadow: 0px 0px 50px -10px rgb(17, 53, 255);
+    box-shadow: 0px 0px 50px -10px rgb(255, 204, 63);
+    background-color: rgb(255, 204, 63);
+    color: #00021d;
     }
 
 /* RESPONSIVIDADE ------------------------------------------------------------------------------------------------------------------------------------ */

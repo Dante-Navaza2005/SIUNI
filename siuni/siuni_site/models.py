@@ -22,9 +22,9 @@ DIAS_UTEIS_CHOICES = [
 
 class Usuario(models.Model):
     nome_usuario = models.CharField(max_length=200, null = True, blank = True)
-    matricula = models.CharField(max_length=200, null = True, blank = True, unique=True)
+    matricula = models.IntegerField(default=0)
     email = models.EmailField(max_length=200, null = True, blank = True)
-    telefone = models.CharField(max_length=200, null = True, blank = True)
+    telefone = models.IntegerField(default=0)
     user = models.OneToOneField(User, null = True, blank = True, on_delete = models.CASCADE)
     tipo_de_usuario = models.CharField(max_length=200,choices=TIPO_USUARIO_CHOICES)  # Aluno ou Professor
     data_nascimento = models.DateField(null = True, blank = True)
