@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA com pushState</title>
+</head>
+<body>
+  <nav>
+    <a href="/" onclick="navigate(event, '/')">Home</a>
+    <a href="/about" onclick="navigate(event, '/about')">About</a>
+    <a href="/contact" onclick="navigate(event, '/contact')">Contact</a>
+  </nav>
+  <div id="content">
+    <h1>Welcome to Home Page</h1>
+  </div>
+
+  <script >
+    
+// Função para trocar o conteúdo e atualizar o histórico sem recarregar a página
+function navigate(event, path) {
+  event.preventDefault(); // Evita o recarregamento da página
+  history.pushState({}, "", path); // Atualiza a URL no navegador
+  renderContent(path); // Atualiza o conteúdo da página
+}
+
+// Função para renderizar o conteúdo com base na URL
+function renderContent(path) {
+  const content = document.getElementById("content");
+  switch (path) {
+    case "/about":
+      content.innerHTML = "<h1>About Us</h1><p>This is the about page.</p>";
+      break;
+    case "/contact":
+      content.innerHTML = "<h1>Contact</h1><p>This is the contact page.</p>";
+      break;
+    default:
+      content.innerHTML = "<h1>Welcome to Home Page</h1>";
+  }
+}
+
+// Evento para manipular o botão "voltar" do navegador
+window.onpopstate = () => {
+  renderContent(window.location.pathname);
+};
+
+  </script>
+</body>
+</html>

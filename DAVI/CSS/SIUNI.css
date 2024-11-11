@@ -1,76 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-*{ margin: 0; padding: 0; color: white;}
+/* VARIÁVEIS --------------------------------------------------------------------------------------*/
+:root {
+    --cor-primaria: #15ff00;
+    --largura-container: 1200px;
+    --padding: 16px;
+    --BarraInferiorHeight: 50px;
+    --BarraConfiguracoesHeight: 40px;
 
-html { height: 100%; width: 100% }
-ul{list-style: none;}
-li{list-style: none;}
+  }
+
+
+#Canvas {
+
+}
+
+
+/* INICIAL ======================================================================================== */
+* { margin: 0; padding: 0;}
+
+html { height: 100%; width: 100%; }
 
 body { 
     height: 100%; width: 100%; 
-    background-color: antiquewhite;
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
+    background-color: var(--BackgroundColor);
+    color: var(--FontColor);
+    font-family: "Work Sans", sans-serif; font-optical-sizing: auto; font-style: normal; font-weight: var(--FontWeight);
+    transition: 0.2s ease;
     }
 
+/* ELEMENTO MAIN ---------------------------------------------------------------------------------- */
 #SIUNI { 
     height: 100%; width: 100%;
-    background-color: #000415;
     position: relative;
-    display: flex; flex-direction: row;
-}
+    display: flex; flex-direction: row; align-items: stretch;
+    overflow: hidden;
+    }
 
- 
 /* CONTEUDO --------------------------------------------------------------------------------------- */
 #Conteudo { 
     flex: 1; height: 100%;
-
+    box-sizing: border-box;
+    overflow: hidden;
     }
 
 
 /* BARRA LATERAL ---------------------------------------------------------------------------------- */
 
-#BarraLateral01 {
+#BarraLateral {
     height: 100vh; width: 300px;
     position: relative;
     }   
-#BarraLateral02 {
+
+#BarraFixa {
     height: 100%; width: 300px;
     position: fixed;
-    }
-#BarraLateral03 {
+}
+ 
+#BarraReal {
     height: 100%; width: 100%;
-    background-color: #000415;
     position: relative;
     border-right: solid rgb(32, 32, 32) 1px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    display: block;
     }
 
-/*-----------------------------------------------------------------------------*/
+#BarraConfiguracoes { display: none; }
 
-.BlocoLateral {
-    display: flex; flex-direction: column;  align-items: stretch; 
-    }
+/* ELEMENTOS DENTRO DA BARRA ---------------------------------------------------------------------- */
 
-
-/* LOGO ------------------------------------------------------------------------------------------- */
-#BlocoLogo {
-    position: relative; top: 20px;
+.BlocoDaBarra {
+    display: flex; flex-direction: column;  align-items: stretch;
     width: 100%;
+    position: absolute;
+    padding: 0px 12px;
+    left: 0%;
+    box-sizing: border-box;
+    }
+
+.ItemDaBarra {
+    font-size: 1rem;
+    cursor: pointer;
+    height: 50px; width: 100%;
+    margin-top: 5px; margin-bottom: 5px;
+    display: flex; flex-direction: row; align-items: center;
+    border-radius: 10px;
+    transition: 0.3s;
+    user-select: none;
+    }
+    
+.ItemIcon {
+    margin-left: 15px;
+    display: flex; justify-content: center; align-items: center;
+    }
+
+.ItemText { margin: 0 0 0 15px; }   
+
+i {
+    font-size: 1.6rem;
+    }
+     
+.ItemDaBarra:hover { background-color: var(--HoverItemBackgroundColor); }
+.ItemDaBarra:hover i { transform: scale(1.1); }
+    
+
+/* LOGO ========================================= */
+
+#BlocoLogo {
+    top: 20px;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     font-family: "Inter", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; letter-spacing: 2px; 
+    
     }
 
-#SiuniArea {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-}
-
-#SiuniArea:hover #PaiSiuniText #SiuniText {
-    left: 0%;
-    }
+#SiuniArea { display: flex; flex-direction: column; justify-content: center; align-items: center; }
 
 #SiuniLogo {
     position: relative;
@@ -79,6 +124,7 @@ body {
     width: 80px; height: 80px;
     }
 
+#SiuniArea:hover #PaiSiuniText #SiuniText { left: 0%; }
 
 #PaiSiuniText {
     cursor: pointer;
@@ -98,44 +144,158 @@ body {
     left: -100%;
     }
 
+/* ABAS ========================================= */
+
 #BlocoAbas{
-    position: absolute; width: 100%;
-    top: 200px;
     display: flex; flex-direction: column; align-items: center;
+    top: 200px;
     }
 
-#BlocoConf01 {
+/* CONFIGURACOES  =============================== */
+
+#BlocoConfiguracoes {
     display: flex; flex-direction: column; align-items: center;
-    position: absolute; width: 100%;
     bottom: 20px;
     }
 
-/* ITEM LATERAL ------------------------------------------------------------------------------------*/
-
-.ItemLink {
-    font-size: 1rem;
-    cursor: pointer;
-    height: 50px; width: 95%;
-    margin-top: 5px; margin-bottom: 5px;
-    display: flex; flex-direction: row; align-items: center;
-    border-radius: 10px;
-    transition: 0.3s;
+#OpcoesConfiguracoes {
+    position: absolute;
+    bottom: 100%; 
+    width: 100%;
+    left: 0%;
+    padding: 0px 12px;
+    box-sizing: border-box;
+    user-select: none;
     }
 
-.ItemLink:hover { background-color: rgba(255, 255, 255, 0.1); }
+#OpcoesConfiguracoesA {
+    background-color: var(--OpcoesConfiguracoesABackgroundColor);
+    padding: 8px 5px;
+    border-radius: 10px;
+    }
 
-.ItemLink:hover i { transform: scale(1.1); }
+.OPCF {
+    box-sizing: border-box; 
+    padding: 15px 5px 15px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    display: flex; flex-direction: row; align-items: center;
+    }
+
+.OPCF .OptionIcon {
+    font-size: 1.1rem;
+    }
+
+.OPCF .OptionText {
+    padding-left: 10px;
+    font-size: 0.9rem;
+
+    }
+
+.OPCF:hover {
+    background-color: var(--OPConfiguracoes);
+
+    }
+.OPCF:hover{
+
+
+    }
+
+#IconOptionOutSiuni {
+    width: 20px;
+    height: 20px;
+    }
+
+
+/* RESPONSIVIDADE ----------------------------------------------------------------------------------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+    
+/*Barra lateral Esquerda -> Barra inferior*/
+#SIUNI {
+    flex-direction: column; align-items: stretch;
+    }
+
+#Conteudo {
+    all: unset;
+    flex: 1; overflow: hidden;
+    flex-shrink: 0;
+    }
+
+
+#BarraLateral { display: none; }
+
+#BarraInferior {
+    position: relative;
+    bottom: 0;
+    width: 100%; height: var(--BarraInferiorHeight);
+    }
+
+#BarraFixa {
+    width: 100%; height: var(--BarraInferiorHeight);
+    bottom: 0;
+    z-index: 100;
+    background-color: var(--BackgroundColor);
+    
+    }
+
+#BarraReal {
+    position: relative;
+    width: 100%; height: 100%; 
+    box-sizing: border-box; border-right: none;
+    border-top: 1px solid rgb(32, 32, 32);
+
+    }
+
+#BlocoLogo { display: none; }
+#BlocoConfiguracoes { display: none; }
+
+#BlocoAbas {
+    all: unset;
+    width: 100%; height: 100%;
+    display: flex; flex-direction: row; justify-content: space-around; align-items: center;
+
+    }
+
+/* ITEM ========================================================= */
+.ItemDaBarra {
+    all: unset;
+
+    }   
 
 .ItemIcon {
-    margin-left: 15px;
-    display: flex; justify-content: center; align-items: center;
+    all: unset;
     }
 
-.ItemText { margin: 0 0 0 15px; }   
 
 i {
+    all: unset;
     font-size: 1.6rem;
-    transition: 0.3s;
 
+    }
+    
+
+.ItemText { display: none; }
+
+/* CONFIGURAÇÔES ------------------------------------------------------------------------------*/
+
+
+#BarraConfiguracoes {
+    all: unset;
+    box-sizing: border-box; 
+    height: var(--BarraConfiguracoesHeight); width: 100%;
+    display: flex; flex-direction: row; justify-content: flex-end; align-items: center;
+    padding-right: 5px;
+    border-bottom: 1px solid rgb(54, 54, 54);
+    }
+
+#BarraConfiguracoes #IconConf i {
+    font-size: 2rem;    
+    }
+
+    
 }
+
+
+
 

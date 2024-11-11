@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        *{ margin: 0; padding: 0; color: rgb(0, 0, 0);}
+        html { width: 100%; height: 100%; }
+        body {
+            height: 100%; width: 100%; 
+            background-color: black;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            }
+
+        #BlocoSiu {
+            height: 400px; width: 400px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            position: relative;
+        }
+        
+        #SIU {
+            color: white;
+            position: relative;
+            height: 200px; width: 200px;
+        }
+        #CorpoSiu {
+            position: absolute;
+            height: 100%; width: 100%;
+            transform: rotateZ(45deg);
+
+        }
+
+        .Coracao {
+            background-color: #0c545e;
+            height: 200px; width: 200px;
+            position: absolute;
+      
+        }
+
+        #ABA1 {
+            border-radius: 50%;
+            left: -50%;
+        }
+
+        #ABA2 {
+            border-radius: 50%;
+            top: -50%;
+
+        }
+        
+        /* OLHOS ---------------------------------------------------------------------------------- */
+        #OLHOS {
+            height: 100%; width: 100%;
+            position: absolute;
+            display: flex; flex-direction: column;  align-items: center;
+            
+        }
+        #CaixaOlhos {
+            top: 30px;
+            position: absolute;
+            height: 60px; width: 100px;
+            }
+        
+        #BlocoOlhos {
+            width: 110px;
+            position: absolute;
+            display: flex; flex-direction: row;  justify-content: space-between; align-items: center;
+
+            transition: 1s ease;
+            }
+
+        .Olho {
+            height: 30px; width: 30px;
+            background-color: antiquewhite;
+            }
+
+    </style>
+
+</head>
+<body>
+    
+
+    <div id="BlocoSiu">
+        <div id="SIU">
+            <div id="CorpoSiu">
+                <div id="ABA1" class="Coracao"></div>
+                <div id="ABA2" class="Coracao"></div>
+                <div id="MEIO" class="Coracao"></div>
+            </div>
+
+            <div id="OLHOS">
+                <div id="CaixaOlhos" class="CaixaOlho"> 
+                    <div id="BlocoOlhos">
+                        <div id="Olho1" class="Olho"> </div> 
+                        <div id="Olho2" class="Olho"> </div> 
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+<script>
+
+    let CaixaOlhos = document.getElementById("CaixaOlhos")
+    let LarguraCaixaOlhos = CaixaOlhos.offsetWidth
+    let AlturaCaixaOlhos = CaixaOlhos.offsetHeight
+
+    let BlocoOlhos = document.getElementById("BlocoOlhos")
+    let LarguraBlocoOlhos = BlocoOlhos.offsetWidth/2
+    let AlturaBlocoOlhos = BlocoOlhos.offsetHeight/2
+
+
+    let LarguraTela = window.innerWidth
+    let AlturaTela = window.innerHeight
+
+
+    const rect = CaixaOlhos.getBoundingClientRect();
+    const L = rect.left;
+    const T = rect.top;
+    const R = rect.right;
+    const B = rect.bottom;
+
+
+    let throttleTimeout;
+
+
+    document.addEventListener("mousemove", (event)=> {
+
+        if (!throttleTimeout) {
+
+            var MouseX = event.clientX
+            var MouseY = event.clientY
+
+            if (MouseY < B && MouseY > T) { var PosYBFilho = (MouseY - T) - AlturaBlocoOlhos } 
+            else if (MouseY > (T + AlturaCaixaOlhos)) { PosYBFilho = AlturaCaixaOlhos - AlturaBlocoOlhos   }
+            else { PosYBFilho = 0 - AlturaBlocoOlhos } 
+        
+
+            if (MouseX > L && MouseX < R) { var PosXBFilho = (MouseX - L) - LarguraBlocoOlhos } 
+            else if (MouseX > (L + LarguraCaixaOlhos) ) { PosXBFilho = LarguraCaixaOlhos - LarguraBlocoOlhos } 
+            else { PosXBFilho = 0 - LarguraBlocoOlhos} 
+            
+            BlocoOlhos.style.left = `${PosXBFilho}px`
+            BlocoOlhos.style.top  = `${PosYBFilho}px`
+
+            throttleTimeout = setTimeout(() => { throttleTimeout = null; }, 100); 
+            }
+
+        } )
+
+    
+
+</script>
+
+</body>
+</html>

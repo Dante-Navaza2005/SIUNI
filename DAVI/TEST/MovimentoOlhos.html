@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIU SIU</title>
+
+    <style>
+
+        *{ margin: 0; padding: 0; color: rgb(0, 0, 0);}
+        html { width: 100%; height: 100%; }
+        body {
+            height: 100%; width: 100%; 
+            background-color: black;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            }
+
+        #BlocoPai {
+            height: 300px; width: 300px;
+            border: 1px solid white;
+            position: absolute;
+
+            }
+        
+        #BlocoFilho {
+            height: 40px; width: 40px;
+            background-color: rgb(255, 145, 0);
+            position: absolute;
+            transition: 1s ease;
+            }
+
+    </style>
+
+</head>
+<body>
+<!-- HTML ----------------------------------------------------------------------------------------->
+    
+
+<div id="BlocoPai">
+
+    <div id="BlocoFilho"></div>
+    
+</div>
+
+
+<!-- SCRIPT --------------------------------------------------------------------------------------->
+<script>
+
+    const BlocoPai = document.getElementById("BlocoPai") // Caixa Olho
+    const LarguraBPai = BlocoPai.offsetWidth
+    const AlturaBPai = BlocoPai.offsetHeight
+        
+    const BlocoFilho = document.getElementById("BlocoFilho") // Olho
+    const LarguraBFilho = BlocoFilho.offsetWidth/2
+    const AlturaBFilho = BlocoFilho.offsetHeight/2
+
+    const LarguraTela = window.innerWidth
+    const AlturaTela = window.innerHeight
+
+    const rect = BlocoPai.getBoundingClientRect();
+    const L = rect.left;
+    const T = rect.top;
+    const R = rect.right;
+    const B = rect.bottom;
+
+    let throttleTimeout;
+    document.addEventListener("mousemove", (event)=>{
+        
+        if (!throttleTimeout) {
+
+            var MouseX = event.clientX
+            var MouseY = event.clientY
+            if (MouseY < B && MouseY > T) { var PosYBFilho = (MouseY - T) - AlturaBFilho } 
+            else { if (MouseY > AlturaTela/2) { PosYBFilho = AlturaBPai - AlturaBFilho }  else { PosYBFilho = 0 - AlturaBFilho} }
+
+            if (MouseX > L && MouseX < R) { var PosXBFilho = (MouseX - L) - LarguraBFilho } 
+            else { if (MouseX > LarguraTela/2) { PosXBFilho = LarguraBPai - LarguraBFilho } else { PosXBFilho = 0 - AlturaBFilho} }
+            
+            BlocoFilho.style.left = `${PosXBFilho}px`
+            BlocoFilho.style.top  = `${PosYBFilho}px`
+
+            throttleTimeout = setTimeout(() => { throttleTimeout = null; }, 100); 
+            }
+
+        })
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
