@@ -2,36 +2,40 @@
 {% load static %}
 
 {% block body %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-    <div id="LOGIN">
-        <div id="BySIUNI" class="surgindo" >
-            <div id="LogoSIUNI"></div>
-            <p id="TextSIUNI">SIUNI</p>
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+<div id="LOGIN">
+    <div id="BySIUNI" class="surgindo">
+        <div id="LogoSIUNI"></div>
+        <p id="TextSIUNI">SIUNI</p>
+    </div>
+    <div id="BlocoPrincipal">
+        <div id="BlocoLogo">
+            <div id="LogoPUC"></div>
         </div>
-            <div id="BlocoPrincipal" >
-
-                <div id="BlocoLogo" >
-                    <div id="LogoPUC"></div>
+        
+        <form method="post" action="{% url 'fazer_login' %}" id="login-form">
+            {% csrf_token %}
+            <div id="BlocoCampos">
+                <div id="CampoMatricula" class="Campo">
+                    <input type="text" name="matricula" id="InputMatricula" class="Input" placeholder="Matrícula">
                 </div>
-                
-                <div id="BlocoCampos" >
-                    <div id="CampoMatricula" class="Campo" >
-                        <input type="text" id="InputMatricula" class="Input" placeholder="Matrícula" >
-                    </div>
 
-                    <div id="CampoSenha" class="Campo">
-                        <input type="password" id="InputSenha" class="Input" placeholder="Senha" >
-                    </div>
-                </div>
-                
-                <div id="BlocoEnviar" class="Bloco">
-                    <div id="CaixaEnviar">
-                        <div id="BotaoEnviar">Enviar</div>
-                    </div>
+                <div id="CampoSenha" class="Campo">
+                    <input type="password" name="senha" id="InputSenha" class="Input" placeholder="Senha">
                 </div>
             </div>
-    </div>
 
-    <script src="https://kit.fontawesome.com/f196a55506.js" crossorigin="anonymous"></script> <!-- ICONES -->
-    <script src={% static 'js/login.js '%}></script>
+            <div id="BlocoEnviar" class="Bloco">
+                <button type="submit" id="BotaoEnviar">Enviar</button>
+                {% if error %}
+                    {{ error }}
+                {% endif %}
+            </div>
+        </form>
+        </div>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/f196a55506.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/login.js' %}"></script>
 {% endblock %}

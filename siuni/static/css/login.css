@@ -41,7 +41,7 @@ body {
     height: 100%; width: 100%; max-height: 600px; min-height: 400px;
     display: flex; flex-direction: column ; justify-content: space-between; align-items: stretch;
     position: absolute;
-    top: 60px;
+    top: 20px;
     }
 
 /* LOGO ------------------------------------------------------------------------------------------- */
@@ -60,17 +60,20 @@ body {
 
 
 
+
 /* CAMPOS DE PREENCHIMENTO ------------------------------------------------------------------------ */
 
 #BlocoCampos {
     flex: 1;
     display: flex; flex-direction: column; justify-content: space-between; align-items: center; 
+    transform: translateY(-30px);
     }
 
 .Campo {
     flex: 1;
     width: 100%; 
     display: flex; flex-direction: column; justify-content: center; align-items: center;
+    margin: 40px;
     }
 
 .Input {
@@ -111,6 +114,10 @@ body {
     cursor: pointer;
     border-radius: 20px;
     transition: 0.3s ease-in-out ;
+    margin-top: 34px;
+    margin-bottom: 40px;
+    border: 0px;
+    font-size: inherit !important;
     }
 
 #BotaoEnviar:hover {
@@ -119,6 +126,7 @@ body {
     background-color: rgb(255, 204, 63);
     color: #00021d;
     }
+
 
 /* RESPONSIVIDADE ------------------------------------------------------------------------------------------------------------------------------------ */
 
