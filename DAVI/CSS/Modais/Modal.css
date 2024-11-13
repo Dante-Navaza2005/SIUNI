@@ -54,3 +54,11 @@
 
 
 
+@media (max-width:1000px) {
+
+    .MODAL_CampoPrincipal {
+        width: 100%;
+        }
+
+
+    }

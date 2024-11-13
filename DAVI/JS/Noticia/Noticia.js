@@ -18,6 +18,7 @@ function abrirNoticia(page, event) {
 
 
 window.addEventListener("click", (event) => {
+    event.stopPropagation()
     if (event.target = document.getElementById('ModalNoticia')) { fecharModal('ModalNoticia', event) }
     })
     

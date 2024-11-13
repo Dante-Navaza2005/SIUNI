@@ -93,6 +93,12 @@ div#CalendarioInferior > *:first-child {
  
 /* Evento -----------------------------------------------------------------------------------------*/
 .Evento {
+    position: relative;
+    }
+
+
+.SubEvento {
+    width: 100%; height: 100%;
     cursor: pointer;
     box-sizing: border-box;  
     border: 1px solid #5271ff;  border-radius: 15px;
@@ -101,9 +107,11 @@ div#CalendarioInferior > *:first-child {
     position: relative;
     display: flex;  flex-direction: column; justify-content: space-around; align-items: center;
     overflow-y: auto;
+
     }
 
-.Evento::-webkit-scrollbar {
+
+.SubEvento::-webkit-scrollbar {
     display: none;
 }
 
@@ -249,11 +257,23 @@ div#CalendarioInferior > *:first-child {
 
 /* Evento -----------------------------------------------------------------------------------------*/
 .Evento {
+    
+}
+
+
+.SubEvento {
     padding: 5px 2px;
     position: relative;
     display: flex;  flex-direction: column; justify-content: space-around; align-items: center;
     overflow-y: auto;
+
+
     }
+
+
+
+
+
 
 .Evento::-webkit-scrollbar {
     display: none;
