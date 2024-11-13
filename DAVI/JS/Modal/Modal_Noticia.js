@@ -10,6 +10,9 @@ let PosicaoVertical
 let PorcentagemVertical
 
 function AtualizaBarraProgresso(event) {
+    let NoticiaDetalhada  = document.getElementById("Noticia-NoticiaDetalhada")
+    let NoticiaProgresso  = document.getElementById("Noticia-Progresso")
+
     TamanhoDaNoticiaReal = NoticiaDetalhada.scrollHeight
     TamanhoDaNoticiaAparente = NoticiaDetalhada.clientHeight
     PosicaoVertical = NoticiaDetalhada.scrollTop
