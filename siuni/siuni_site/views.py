@@ -8,15 +8,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
-from time import sleep
-from django.shortcuts import render, redirect
-
 def fazer_login(request):
     if request.method == 'POST':
         matricula = request.POST.get('matricula')
