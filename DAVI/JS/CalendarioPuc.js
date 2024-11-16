@@ -1,4 +1,3 @@
-
 // DATA ------------------------------------------------------------------------------------------- >>>
 
 function HorarioAtualizado() {
@@ -22,13 +21,9 @@ function HorarioAtualizado() {
 
 setInterval(HorarioAtualizado, 1000)
 
-
-
-
-
 function AdicionarEvento() {
     let Evento = document.createElement('div')
-    fetch('../HTML/Evento.html')
+    fetch('../HTML/Elementos/Evento.html')
         .then(resposta => resposta.text())
         .then(html => {Evento.innerHTML = html; Evento.classList.add("Evento")})
         .catch(error => { console.error('Erro erro', error); });
@@ -36,6 +31,42 @@ function AdicionarEvento() {
     const feed = document.getElementById('DiaEvtQuinta')
     feed.appendChild(Evento)
     }
+
+
+
+// Detalhes do evento ----------------------------------------------------------------------------- >>>
+let OPEN = 0
+
+function AbrirDetalhesDoEvento(event) {
+    if (OPEN == 0) {
+        console.log("AQUIII")
+        let evento = event.currentTarget
+        let modalEvento = document.createElement("div")
+    
+        fetch('Modais/Modal_Evento.html')
+            .then(response => response.text())
+            .then(data => { 
+                modalEvento.classList.add("ModalEvento")
+                modalEvento.innerHTML = data 
+                evento.appendChild(modalEvento)
+                } )
+            .catch(error => console.log("Não foi possivel carregar: ", error ) )
+        OPEN = 1
+        }
+    else {
+        let evento = event.currentTarget
+        let modalEvento = document.getElementsByClassName("ModalEvento")[0]
+
+        evento.removeChild( modalEvento )
+
+        OPEN = 0
+        }
+
+
+    }
+
+
+
 
 
 

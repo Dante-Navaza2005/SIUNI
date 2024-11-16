@@ -26,11 +26,6 @@ var Conteudo = document.getElementById("Conteudo")
 var Altura = Conteudo.offsetHeight
 var Largura = Conteudo.offsetWidth
 
-// console.log(`${Altura}`)
-// console.log(`${Largura}`)
-// console.log("Largura da tela: " + window.innerWidth + "px");
-// console.log("Altura da tela: " + window.innerHeight + "px");
-
 var CANVAS = document.getElementById("Canvas")
 
 CANVAS.width = Largura
@@ -38,7 +33,7 @@ CANVAS.height = Altura
 
 var context = CANVAS.getContext("2d")
 
-var Raio = 30
+var Raio = 50
 var X = 100
 var Y = 100
 var DX = 5
