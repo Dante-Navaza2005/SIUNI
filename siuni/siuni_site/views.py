@@ -8,6 +8,15 @@ from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from time import sleep
+from django.shortcuts import render, redirect
+
 def fazer_login(request):
     if request.method == 'POST':
         matricula = request.POST.get('matricula')
@@ -20,6 +29,7 @@ def fazer_login(request):
         chrome_options.add_argument("--disable-gpu")
 
         try:
+            # Inicia o ChromeDriver automaticamente usando webdriver-manager
             driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
             # Acessar o site do SAU e realizar o login
@@ -46,7 +56,6 @@ def fazer_login(request):
             
             if "Atividades Complementares" in page_content:
                 return redirect('homepage')  # Redireciona para evitar reenvio de formulário
-
             else:
                 # Armazena a mensagem de erro na sessão para exibir após o redirecionamento
                 request.session['error'] = 'Login falhou. Verifique seus dados e tente novamente.'
@@ -59,6 +68,7 @@ def fazer_login(request):
     # Carrega a mensagem de erro da sessão, se existir
     error = request.session.pop('error', None)
     return render(request, 'login.html', {'error': error})
+
 
 def homepage(request):
     # Obter todos os usuários e as informações associadas
