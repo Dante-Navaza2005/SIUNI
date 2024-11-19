@@ -55,7 +55,7 @@
     font-size: 1.8rem;
     font-weight: 400;
     }
-
+ 
 
 /* GRADE REAL ----------------------------------- */
 #MeuCursoAreaGradeGrade {
@@ -64,6 +64,7 @@
     display: grid;
     border-top: 1px solid  var(--MeuCursoCorDaBorda) ;
     border-left: 1px solid  var(--MeuCursoCorDaBorda);
+    overflow: hidden;
     } 
 
 .MeuCursoAreaGradeGradeCelula {
