@@ -1,0 +1,156 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+div#Perfil {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: flex-start; align-items: stretch;
+    }
+
+/* CAMPO INFORMAÇÕES ------------------------------------------------------------------------------ */
+
+#CampoInformacoes { 
+    box-sizing: border-box; 
+    display: flex;  flex-direction: column; justify-content: center; align-items: center;
+    position: relative;
+    height: 400px;  min-height: 300px;
+    width: 100%; min-width: 100%;
+    }
+
+#CampoInformacoesPrincipal {
+    box-sizing: border-box; border-bottom: 1px solid rgb(54, 54, 54);
+    height: 100%;
+    width: 90%; max-width: 800px;
+
+    display: flex;  flex-direction: column; justify-content: center; align-items: stretch;
+    }
+
+
+#AreaInformacoes {
+    box-sizing: border-box; 
+    display: flex; flex-direction: row; justify-content: center; align-items: stretch;
+
+    }
+
+.BlocoInfo {
+    flex: 1;
+    box-sizing: border-box; 
+    }
+
+#BlocoFoto {
+    display: flex; flex-direction: row; justify-content: center; 
+
+    }
+
+#BlocoStatus {
+    display: flex; flex-direction: column; justify-content: space-around; 
+
+    }
+
+
+img#FotoDePerfil {
+    height: 200px; width: 200px; border-radius: 50%;
+
+    }
+
+/* TEXTOS ======================================= */
+
+#TextoNome {
+    font-size: 1.8rem; font-weight: 600;
+    }
+
+#TextoCurso {
+    font-size: 1.2rem; font-weight: 300;
+
+    }
+
+#TextoSemestre {
+    font-size: 1.2rem; font-weight: 300;
+
+    }
+
+
+
+/* RESPONSIVIDADE --------------------------------------------------------------------------------- */
+
+/* Celular e Tablet -------------------------------------------------*/
+
+
+@media (max-width: 1000px) {
+
+
+#CampoInformacoes {
+
+    height: 200px;
+    min-height: 150px;
+    }
+
+img#FotoDePerfil {
+    width: 150px; height: 150px;
+
+    }
+
+.BlocoInfo {
+    box-sizing: border-box; 
+    /* border: 1px solid rgb(1, 120, 255); */
+    }
+
+#BlocoFoto {
+    flex: 1;
+    display: flex; flex-direction: row; justify-content: left; 
+    
+}
+#BlocoStatus {
+    flex: 2;
+    
+    }
+
+
+#TextoNome {
+    font-size: 1.2rem; font-weight: 600;
+    margin-left: 10px;
+    }
+
+#TextoCurso {
+    font-size: 1rem; font-weight: 400;
+    margin-left: 10px;
+
+    }
+
+#TextoSemestre {
+    font-size: 1rem; font-weight: 400;
+    margin-left: 10px;
+
+    }
+
+
+
+}
+
+
+@media (max-width: 600px) {
+
+    img#FotoDePerfil {
+        width: 100px; height: 100px;
+
+        }
+
+
+        #TextoNome {
+            font-size: 1.2rem; font-weight: 600;
+            margin-left: 10px;
+            }
+        
+        #TextoCurso {
+            font-size: 0.8rem; font-weight: 400;
+            margin-left: 10px;
+        
+            }
+        
+        #TextoSemestre {
+            font-size: 0.8rem; font-weight: 400;
+            margin-left: 10px;
+        
+            }
+
+
+}

@@ -1,0 +1,62 @@
+{% load static %}
+    <!-- SIUNI ------------------------------------------------------------------------------------------------------------------>
+    <div id="SIUNI"> 
+        
+        <div id="BarraConfiguracoes"> <div class="ItemIcon" id="IconConf" ><i class="bi bi-list"></i></div>  </div> <!-- CELULAR VIEW-->
+
+        <div id="BarraLateral"></div> 
+
+        <div id="BarraFixa">
+            <div id="BarraReal"> 
+
+                <div id="BlocoLogo" class="BlocoDaBarra" > <!-- BLOCO DA LOGO -->
+                    <div id="SiuniArea">
+                        <div id="SiuniLogo"> </div>
+                        <div id="PaiSiuniText"> <div id="SiuniText">SIUNI</div> </div>
+                    </div>
+                </div>
+
+                <div id="BlocoAbas" class="BlocoDaBarra"> <!-- BLOCO DE ABAS -->
+                    <div class="ItemDaBarra" onclick="LoadPageContent('PucAgora.html',  event)" >  <div class="ItemIcon"> <i class="bi bi-newspaper"></i>      </div> <p class="ItemText">Puc Agora</p>  </div>
+                    <div class="ItemDaBarra" onclick="LoadPageContent('Calendario.html', event)"> <div class="ItemIcon"> <i class="bi bi-calendar3"></i>      </div> <p class="ItemText">Calendário</p> </div>
+                    <div class="ItemDaBarra" onclick="LoadPageContent('MeuCurso.html', event)">   <div class="ItemIcon"> <i class="bi bi-heart"></i>          </div> <p class="ItemText">Meu Curso</p>  </div>
+                    <div class="ItemDaBarra" onclick="LoadPageContent('Perfil.html', event)">     <div class="ItemIcon"> <i class="bi bi-person-circle"></i>  </div> <p class="ItemText">Perfil</p>     </div>
+                </div>
+
+                <div id="BlocoConfiguracoes" class="BlocoDaBarra"> <!-- BLOCO DE CONFIGURAÇÕES -->
+                    <div id="OpcoesConfiguracoes" >
+                        <div id="OpcoesConfiguracoesA">
+                            <div id="OP-TEMA-COR" class="OPCF"> <i id="IconOptionTheme" class="bi bi-lightbulb-fill OptionIcon"></i>  <span class="OptionText">Trocar Tema</span> </div>  
+                            <div id="OP-SOBRE-SIUNI" class="OPCF" onclick="AbrirSobreSiuni('Modais/Modal_SobreSiuni.html', event)"> <i class="bi bi-exclamation-circle-fill OptionIcon"></i>  <span class="OptionText">Sobre o SIUNI</span></div>                        
+                            <div id="OP-SAIR" class="OPCF"> <img id="IconOptionOutSiuni" src="../IMGS/ICONS/OUT-SIUNI.ico" alt="SIUNI">  <span class="OptionText">Sair</span></div>                        
+                        </div>
+                    </div>
+                    <div class="ItemDaBarra" id="ItemDaBarraConfiguracoes"> <div class="ItemIcon"><i class="bi bi-list"></i></div> <p class="ItemText"> Configurações </p></div>
+                </div>       
+                        
+            </div>
+        </div>
+        
+        <!-- CONTEUDO DA PAGINA  -------------------------------------------------------------------->
+        <div id="Conteudo" > <canvas id="Canvas"></canvas> </div>
+ 
+        <div id="BarraInferior"></div> <!-- CELULAR VIEW-->
+
+    </div> 
+
+    <!-- CÓDIGO  ------------------------------------------------------------------------------------>
+
+    <script src="../JS/SIUNI.js"></script>
+    <script src="../JS/Configuracoes/Configuracoes.js"></script>
+    <script src="../JS/Configuracoes/SobreSiuni.js"></script>
+
+    <script src="../JS/PucAgora.js"></script>
+    <script src="../JS/CalendarioPuc.js"></script>
+    <script src="../JS/MeuCurso.js"></script>
+    <script src="../JS/Perfil.js"></script>
+
+    <script src="../JS/Modal/Modal.js"></script>
+    <script src="../JS/Modal/Modal_Noticia.js" ></script>
+
+    <script src="../JS/Noticia/Noticia.js"></script>
+

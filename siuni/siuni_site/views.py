@@ -46,7 +46,7 @@ def fazer_login(request):
             driver.quit()
             
             if "Atividades Complementares" in page_content:
-                return redirect('homepage')  # Redireciona para evitar reenvio de formulário
+                return redirect('perfil')
             else:
                 # Armazena a mensagem de erro na sessão para exibir após o redirecionamento
                 request.session['error'] = 'Login falhou. Verifique seus dados e tente novamente.'
@@ -58,7 +58,10 @@ def fazer_login(request):
 
     # Carrega a mensagem de erro da sessão, se existir
     error = request.session.pop('error', None)
-    return render(request, 'login.html', {'error': error})
+    return render(request, 'Login.html', {'error': error})
+
+def perfil(request) :
+    return render(request, 'Perfil.html', {})    
 
 
 def homepage(request):
