@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadro Branco</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      cursor: crosshair;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="whiteboard"></canvas>
+  <script >
+
+const canvas = document.getElementById('whiteboard');
+const ctx = canvas.getContext('2d');
+
+// Configuração inicial
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let scale = 1; // Para zoom
+let offsetX = 0; // Para pan horizontal
+let offsetY = 0; // Para pan vertical
+let isPanning = false;
+let startX, startY;
+let isDrawing = false;
+
+// Ajuste do tamanho do canvas ao redimensionar
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// Controle de zoom com a roda do mouse
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const zoomIntensity = 0.1;
+  const mouseX = e.offsetX;
+  const mouseY = e.offsetY;
+
+  const zoom = e.deltaY < 0 ? 1 + zoomIntensity : 1 - zoomIntensity;
+  ctx.translate(mouseX, mouseY);
+  ctx.scale(zoom, zoom);
+  ctx.translate(-mouseX, -mouseY);
+
+  scale *= zoom;
+  redraw();
+});
+
+// Controle de pan (segurar botão direito e arrastar)
+canvas.addEventListener('mousedown', (e) => {
+  if (e.button === 2) { // Botão direito
+    isPanning = true;
+    startX = e.clientX;
+    startY = e.clientY;
+  } else if (e.button === 0) { // Botão esquerdo
+    isDrawing = true;
+    ctx.beginPath();
+    ctx.moveTo(
+      (e.offsetX - offsetX) / scale,
+      (e.offsetY - offsetY) / scale
+    );
+  }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (isPanning) {
+    offsetX += (e.clientX - startX);
+    offsetY += (e.clientY - startY);
+    startX = e.clientX;
+    startY = e.clientY;
+    redraw();
+  } else if (isDrawing) {
+    ctx.lineTo(
+      (e.offsetX - offsetX) / scale,
+      (e.offsetY - offsetY) / scale
+    );
+    ctx.stroke();
+  }
+});
+
+canvas.addEventListener('mouseup', () => {
+  isPanning = false;
+  isDrawing = false;
+});
+
+canvas.addEventListener('contextmenu', (e) => e.preventDefault()); // Desabilitar menu de contexto
+
+// Função para redesenhar o conteúdo no canvas
+function redraw() {
+  ctx.setTransform(scale, 0, 0, scale, offsetX, offsetY); // Configurações de escala e deslocamento
+  ctx.clearRect(-offsetX / scale, -offsetY / scale, canvas.width / scale, canvas.height / scale);
+  // Aqui você pode redesenhar qualquer elemento persistente (por enquanto é só um quadro branco)
+}
+
+  </script>
+</body>
+</html>

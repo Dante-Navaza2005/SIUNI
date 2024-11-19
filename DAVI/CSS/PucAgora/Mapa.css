@@ -1,0 +1,35 @@
+
+
+#PucAgoraMapa {
+
+    height: 90%;
+    width: 100%;
+
+    background-image: url('../../IMGS/MapaPuc.png') ;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+    }
+
+#PucAgoraMapa::-webkit-scrollbar {
+        display: none; /* Chrome, Safari e Opera */
+    }
+    
+
+
+
+@media (max-width: 1000px) 
+    {
+    
+    #PucAgoraMapa {
+        height: 100%;
+        }
+
+
+    }
+
+
+
+
