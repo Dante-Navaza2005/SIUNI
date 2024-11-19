@@ -1,0 +1,141 @@
+
+#Feed {
+    width: 100%; height: 100%;
+
+    position: relative;
+    overflow-y: auto;
+    box-sizing: border-box;
+
+    }
+
+div#Feed::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
+
+    }
+
+
+
+
+
+.Noticia {
+    cursor: pointer;
+    width: 100%; height: 200px; 
+    overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center; align-items: stretch;
+    border-bottom: solid rgb(32, 32, 32) 1px;
+    padding: 15px 10px 15px 10px;    
+    
+    }
+
+.NotContent {
+    display: flex; flex-direction: row; 
+    }
+
+.NotEsq {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }
+    
+.NotImg {
+    width: 200px; height: 200px;
+    border-radius: 10px;
+    }
+ 
+.NotDir {
+    flex: 2;
+    margin-left: 20px;
+    display: flex; flex-direction: column; justify-content: space-between; align-items: stretch;
+    }
+
+.NotTitulo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    }
+
+.NotDescricao {
+    font-size: 0.95rem;
+    font-weight: 350;
+    color: var(--DescricaoColor);    
+    }
+
+.NotFonte {
+    font-size: 0.9rem;
+    color: #08c5ff;
+
+    }
+
+
+@media (max-width: 1000px) 
+    {
+    
+
+
+    .Noticia {
+        all: unset;
+        width: 100%; height: 120px; 
+        display: flex; flex-direction: column; justify-content: center; align-items: stretch;
+        border-bottom: solid rgb(32, 32, 32) 1px;
+        box-sizing: border-box;
+        padding: 15px 10px;    
+        overflow: hidden;
+    
+        }
+    
+    .NotContent {
+        all: unset;
+        display: flex; flex-direction: row; 
+        overflow-y: hidden;
+        
+        }
+    
+    .NotEsq {
+        all: unset;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        
+    .NotImg {
+        all: unset;
+        width: 120px; height: 120px;
+        border-radius: 10px;
+        }
+    
+    .NotDir {
+        all: unset;
+        flex: 2;
+        margin-left: 10px; margin-right: 10px;
+        overflow-y: auto;
+        display: flex; flex-direction: column; justify-content: space-between; align-items: stretch;
+    }
+    
+    .NotDir::-webkit-scrollbar {
+        display: none; /* Chrome, Safari e Opera */
+    }
+    
+    
+    .NotTitulo {
+        all: unset;
+    
+        font-size: 1.1rem;
+        font-weight: 700;
+        }
+    
+    .NotDescricao {
+        all: unset;
+    
+        font-size: 0.8rem;
+        font-weight: 350;
+        color: rgb(230, 230, 230);    
+        }
+    
+    .NotFonte {
+        all: unset;
+        font-size: 0.8rem;
+        font-weight: 500;
+    
+        color: #08c5ff;
+    
+        }
+    
+    
+
+
+    }

@@ -1,0 +1,16 @@
+
+
+function construirPerfil() {
+    isConstruido = true
+
+
+    }
+
+
+
+
+
+
+
+
+

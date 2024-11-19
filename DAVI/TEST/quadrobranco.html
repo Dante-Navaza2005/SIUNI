@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadro Branco</title>
+
+    <style>
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.toolbar {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+canvas {
+    border: 1px solid #ccc;
+    cursor: crosshair;
+}
+    </style>
+
+</head>
+<body>
+    <h1>Quadro Branco</h1>
+    <div class="toolbar">
+        <label for="color">Cor:</label>
+        <input type="color" id="color" value="#000000">
+        <label for="size">Tamanho:</label>
+        <input type="number" id="size" value="5" min="1" max="50">
+        <button id="clear">Limpar</button>
+    </div>
+    <canvas id="whiteboard"></canvas>
+    <script >
+
+// Seleciona elementos
+const canvas = document.getElementById('whiteboard');
+const ctx = canvas.getContext('2d');
+const colorPicker = document.getElementById('color');
+const sizeInput = document.getElementById('size');
+const clearButton = document.getElementById('clear');
+
+// Define dimensões do canvas
+canvas.width = window.innerWidth * 0.8;
+canvas.height = window.innerHeight * 0.8;
+
+// Variáveis de controle
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+
+// Configura o evento de desenho
+canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+});
+
+canvas.addEventListener('mousemove', (e) => {
+    if (!isDrawing) return;
+    ctx.strokeStyle = colorPicker.value;
+    ctx.lineWidth = sizeInput.value;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+});
+
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mouseout', () => isDrawing = false);
+
+// Botão para limpar
+clearButton.addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+    </script>
+</body>
+</html>

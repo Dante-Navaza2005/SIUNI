@@ -1,3 +1,13 @@
+
+function construirCalendario() {
+    isConstruido = true
+
+    
+
+    }
+
+
+    
 // DATA ------------------------------------------------------------------------------------------- >>>
 
 function HorarioAtualizado() {
@@ -17,9 +27,9 @@ function HorarioAtualizado() {
         
         ElementoHora.textContent = HorarioFormatado
         }
-    }
+    }    
 
-setInterval(HorarioAtualizado, 1000)
+setInterval(HorarioAtualizado, 1000)    
 
 function AdicionarEvento() {
     let Evento = document.createElement('div')
@@ -28,13 +38,13 @@ function AdicionarEvento() {
         .then(html => {Evento.innerHTML = html; Evento.classList.add("Evento")})
         .catch(error => { console.error('Erro erro', error); });
     
-    const feed = document.getElementById('DiaEvtQuinta')
+    const feed = document.getElementById('DiaEvtQuinta')    
     feed.appendChild(Evento)
     }
 
 
 
-// Detalhes do evento ----------------------------------------------------------------------------- >>>
+// Detalhes do evento ----------------------------------------------------------------------------- >>>    
 let OPEN = 0
 
 function AbrirDetalhesDoEvento(event) {
@@ -50,8 +60,8 @@ function AbrirDetalhesDoEvento(event) {
                 modalEvento.innerHTML = data 
                 evento.appendChild(modalEvento)
                 } )
-            .catch(error => console.log("Não foi possivel carregar: ", error ) )
-        OPEN = 1
+            .catch(error => console.log("Não foi possivel carregar: ", error ) )    
+        OPEN = 1    
         }
     else {
         let evento = event.currentTarget
@@ -63,11 +73,9 @@ function AbrirDetalhesDoEvento(event) {
         }
 
 
-    }
+    }    
 
 
 
-
-
-
+    
 

@@ -19,6 +19,7 @@ div#CampoPrincipal {
     box-sizing: border-box; 
     overflow-y: hidden; 
     display: flex; flex-direction: row;
+    
     }
 
 
@@ -36,82 +37,39 @@ div#AreaDeAbas {
     border-bottom: solid rgb(77, 77, 77) 1px;
     padding-bottom: 15px;
     display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end;
+    gap: 10px;
     }
 
 div.ABA {
-    width: 200px;
+    flex: 1;
     font-weight: 400;
     padding: 7px;
     cursor: pointer;
-    background-color: var(--BackgroundColorB);
     box-sizing: border-box;
     border-radius: 10px;
     display: flex; flex-direction: row; justify-content: center; align-items: center;
     user-select: none;
+    transition: 0.4s;
     }
 
+
+ 
+    
 /* NOTICIA ====================================== */
 
 div#AreaDeConteudo { 
     flex: 1;
     position: relative;
-    overflow-y: auto;
- 
-    }
-
-div#AreaDeConteudo::-webkit-scrollbar {
-        display: none; /* Chrome, Safari e Opera */
-    }
-
-
-.Noticia {
-    cursor: pointer;
-    width: 100%; height: 200px; 
     overflow: hidden;
-    display: flex; flex-direction: column; justify-content: center; align-items: stretch;
-    border-bottom: solid rgb(32, 32, 32) 1px;
-    padding: 15px 10px 15px 10px;    
-
+    box-sizing: border-box;
     }
 
-.NotContent {
-    display: flex; flex-direction: row; 
-    }
 
-.NotEsq {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    }
-    
-.NotImg {
-    width: 200px; height: 200px;
-    border-radius: 10px;
-    }
+
+
  
-.NotDir {
-    flex: 2;
-    margin-left: 20px;
-    display: flex; flex-direction: column; justify-content: space-between; align-items: stretch;
-    }
-
-.NotTitulo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    }
-
-.NotDescricao {
-    font-size: 0.95rem;
-    font-weight: 350;
-    color: var(--DescricaoColor);    
-    }
-
-.NotFonte {
-    font-size: 0.9rem;
-    color: #08c5ff;
-
-    }
-
 /* BLOCO DIREITO ---------------------------------------------------------------------------------- */
-
+ 
 div#BlocoDireito {
     flex: 1;
     box-sizing: border-box; 
@@ -120,8 +78,8 @@ div#BlocoDireito {
     }
 
 div#AreaDeInformacoes {
-    width: 80%; 
-    background-color: var(--BackgroundColorB);
+    width: 90%; 
+    /* background-color: var(--BackgroundColorB); */
     margin-top: 40px; margin-bottom: 40px;
     box-sizing: border-box;
     padding: 20px;
@@ -129,19 +87,17 @@ div#AreaDeInformacoes {
     }
 
 div#TituloAreaDeInformacoes {
-    font-size: 1.5rem; font-weight: 600;
-    text-align: center;
-    margin-top: 20px; margin-bottom: 40px;
+    font-size: 2rem; font-weight: 600;
+    padding: 10px 0px;
+    margin-bottom: 30px;
     }
 
 .InformacaoFixa {
     user-select: none;
-    font-weight: 500; color: #dda200;
-    text-align: center; 
-    box-sizing: border-box; padding: 10px;
-    margin-top: 10px; margin-bottom: 10px;
+    font-weight: 500; color: #ffc72b;
+    box-sizing: border-box; 
+    margin: 20px 0px;
     cursor: pointer;
-
     }
 
 
@@ -180,6 +136,7 @@ div#BlocoDireito {
 div#BlocoEsquerdo {
     all: unset;
     width: 100%;
+    height: 100%;
     overflow: hidden;
     box-sizing: border-box; 
     position: relative;
@@ -203,7 +160,6 @@ div.ABA {
     font-weight: 400;
     padding: 7px;
     cursor: pointer;
-    background-color: #070f3e;
     box-sizing: border-box;
     border-radius: 10px;
     display: flex; flex-direction: row; justify-content: center; align-items: center;
@@ -213,7 +169,7 @@ div.ABA {
 
 /* NOTICIA ====================================== */
 
-div#AreaDeConteudo { 
+#AreaDeConteudo { 
     flex: 1;
     position: relative;
     overflow-y: auto;
@@ -224,72 +180,6 @@ div#AreaDeConteudo::-webkit-scrollbar {
     display: none; /* Chrome, Safari e Opera */
 }
 
-
-.Noticia {
-    all: unset;
-    width: 100%; height: 120px; 
-    display: flex; flex-direction: column; justify-content: center; align-items: stretch;
-    border-bottom: solid rgb(32, 32, 32) 1px;
-    box-sizing: border-box;
-    padding: 15px 10px;    
-    overflow: hidden;
-
-    }
-
-.NotContent {
-    all: unset;
-    display: flex; flex-direction: row; 
-    overflow-y: hidden;
-    
-    }
-
-.NotEsq {
-    all: unset;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    }
-    
-.NotImg {
-    all: unset;
-    width: 120px; height: 120px;
-    border-radius: 10px;
-    }
-
-.NotDir {
-    all: unset;
-    flex: 2;
-    margin-left: 10px; margin-right: 10px;
-    overflow-y: auto;
-    display: flex; flex-direction: column; justify-content: space-between; align-items: stretch;
-}
-
-.NotDir::-webkit-scrollbar {
-    display: none; /* Chrome, Safari e Opera */
-}
-
-
-.NotTitulo {
-    all: unset;
-
-    font-size: 1.1rem;
-    font-weight: 700;
-    }
-
-.NotDescricao {
-    all: unset;
-
-    font-size: 0.8rem;
-    font-weight: 350;
-    color: rgb(230, 230, 230);    
-    }
-
-.NotFonte {
-    all: unset;
-    font-size: 0.8rem;
-    font-weight: 500;
-
-    color: #08c5ff;
-
-    }
 
 
 

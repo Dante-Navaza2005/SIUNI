@@ -20,6 +20,11 @@
     /* CALENDARIO ========================================= */
     --EventoBackgroundColor: #070f3e;
 
+
+
+    --MateriaBackgroundColor : rgb(0, 14, 78);
+
+
     }
 
 .lightTheme 
@@ -34,7 +39,7 @@
     /* OPTIONS ============================================ */
     --OpcoesConfiguracoesABackgroundColor: rgba(0, 0, 0, 0.2);
     --OPConfiguracoes: rgba(0, 0, 0, 0.1);
-
+    
     
     /* PUC AGORA ========================================== */
     --BackgroundColorB: #dfdfdf;
@@ -44,6 +49,11 @@
     /* CALENDARIO ========================================= */
     --EventoBackgroundColor: rgb(224, 224, 224);
     
+
+
+    --MateriaBackgroundColor : rgb(173, 215, 255);
+
+
     }
 
 
