@@ -1,0 +1,88 @@
+/* MODAL SIUNI ==================================================================================== */
+
+#Modal {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    display: flex;
+    }
+
+#ModalCampoPrincipal {
+    background-color: white;
+    height: 80%; width: 80%;
+    border-radius: 20px ;
+    position: absolute;
+    overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    }
+
+#ModalBarraDeFechamento {
+    height: 35px;
+    display: flex; flex-direction: row; align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(185, 185, 185);
+    position: relative;
+    }
+
+#ModalBarraDeFechamento i {
+    font-size: 1.4rem;
+    position: absolute;
+    right: 5px; top: 5px;
+    cursor: pointer;
+    color: rgb(150, 150, 150);
+    }
+
+#ModalBarraDeFechamento i:hover {
+    color: red;
+    }
+
+
+#ModalBarraDeProgesso {
+    box-sizing: border-box;
+    height: 5px;
+    flex-shrink: 0;
+    position: relative;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(185, 185, 185);
+    display: none;
+    }   
+
+#ModalProgresso {
+    height: 100%;
+    width: 0%;
+    background-color:rgb(0, 142, 185);
+    }
+
+
+
+
+
+
+
+
+#ModalConteudo {
+    flex: 1;
+    width: 100%;
+    overflow: auto;
+    color: black;
+    box-sizing: border-box;
+    color: black;
+
+    display: flex; justify-content: center; align-items: center;
+    }
+
+
+
+
+@media (max-width:1000px) {
+
+    .ModalCampoPrincipal {
+        width: 100%;
+        }
+
+
+    }

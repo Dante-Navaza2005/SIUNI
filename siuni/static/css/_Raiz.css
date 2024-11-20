@@ -1,0 +1,68 @@
+
+:root 
+    {
+    /* MAIN =============================================== */
+    --BackgroundColor: #000415;
+    --FontColor: white;
+    --FontWeight: 400;
+    --HoverItemBackgroundColor: rgba(255, 255, 255, 0.1);
+    
+    /* OPTIONS ============================================ */
+    --OpcoesConfiguracoesABackgroundColor: rgba(255, 255, 255, 0.2);
+    --OPConfiguracoes: rgba(255, 255, 255, 0.1);
+    
+
+    /* PUC AGORA ========================================== */
+    --BackgroundColorB: #070f3e;
+    --DescricaoColor: rgb(230, 230, 230);
+
+
+    /* CALENDARIO ========================================= */
+    --EventoBackgroundColor: #070f3e;
+
+
+
+    --MateriaBackgroundColor : rgb(0, 14, 78);
+
+
+    }
+
+.lightTheme 
+    {
+
+    /* MAIN =============================================== */
+    --BackgroundColor: white;
+    --FontColor: rgb(0, 0, 0);
+    --FontWeight: 400;
+    --HoverItemBackgroundColor: rgba(0, 0, 0, 0.1);
+    
+    /* OPTIONS ============================================ */
+    --OpcoesConfiguracoesABackgroundColor: rgba(0, 0, 0, 0.2);
+    --OPConfiguracoes: rgba(0, 0, 0, 0.1);
+    
+    
+    /* PUC AGORA ========================================== */
+    --BackgroundColorB: #dfdfdf;
+    --DescricaoColor: rgb(0, 0, 0);
+
+
+    /* CALENDARIO ========================================= */
+    --EventoBackgroundColor: rgb(224, 224, 224);
+    
+
+
+    --MateriaBackgroundColor : rgb(173, 215, 255);
+
+
+    }
+
+
+
+
+
+
+.HIDDEN { display: none; }
+
+
+
+

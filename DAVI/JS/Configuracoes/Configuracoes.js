@@ -51,17 +51,14 @@ document.addEventListener('click', (event) => {
 // OPÇÃO 1 ( Trocar tema ) =========================================================================================================================== >>>
 
 
-const BotaoTrocaTema = document.getElementById('OP-TEMA-COR');
+const botoesTrocaTema = document.querySelectorAll('#OP-TEMA-COR');
 const IconTema = document.getElementById('IconOptionTheme');
 
-BotaoTrocaTema.addEventListener('click', () => { 
-    document.body.classList.toggle('lightTheme'); 
+botoesTrocaTema.forEach(botao => {
+    botao.addEventListener('click', () => { 
+        document.body.classList.toggle('lightTheme'); 
     });
+});
 
-
-
-
-
- 
 
 

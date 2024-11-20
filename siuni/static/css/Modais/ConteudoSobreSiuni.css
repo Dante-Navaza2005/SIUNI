@@ -1,0 +1,73 @@
+ 
+#ModalSobreSiuni {
+
+}
+
+
+#CampoSobreSiuni {
+
+}
+ 
+#SobreSiuni-Conteudo {
+width: 100%;
+height: 100%;
+display: flex; flex-direction: column; justify-content: flex-start;
+color: black;
+box-sizing: border-box;
+border: 1px solid pink;
+}
+
+
+
+#SobreSiuni-BlocoLogo {
+padding: 40px 0px;
+font-size: 3rem;
+
+font-family: "Inter", sans-serif; font-optical-sizing: auto; font-weight: 900; font-style: normal; letter-spacing: 2px;
+display: flex; flex-direction: row; justify-content: center; align-items: center;
+flex-wrap: wrap;
+}
+
+#SobreSiuni-Logo {
+height: 120px; width: 120px;
+background-image: url(../../IMGS/SIUNI.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+flex-shrink: 0;
+
+}
+
+#SobreSiuni-LogoTexto {
+color: black;
+
+}
+
+
+#SobreSiuni-BlocoTitulo {
+text-align: center;
+font-family: "Inter", sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; letter-spacing: 2px;
+font-size: 2rem;
+padding: 25px 0px;
+color: rgb(0, 108, 180);
+color: black;
+
+}
+
+
+#SobreSiuni-BlocoDescricao {
+flex: 1;
+font-size: 1.1rem;
+margin-top: 20px;
+display: flex; flex-direction: column; align-items: center;
+color: black;
+
+}
+
+
+#SobreSiuni-BlocoDescricaoTexto {
+width: 100% ;
+max-width: 800px;
+text-align: center;
+
+}

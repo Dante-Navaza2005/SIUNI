@@ -58,7 +58,23 @@ def fazer_login(request):
 
     # Carrega a mensagem de erro da sessão, se existir
     error = request.session.pop('error', None)
-    return render(request, 'login.html', {'error': error})
+    return render(request, 'Login.html', {'error': error})
+
+def perfil(request) :
+    context = {}
+    return render(request, "Perfil.html", context)
+
+def calendario(request) :
+    context = {}
+    return render(request, "Calendario.html", context)
+
+def meu_curso(request) :
+    context = {}
+    return render(request, "MeuCurso.html", context)
+
+def puc_agora(request) :
+    context = {}
+    return render(request, "PucAgora.html", context)
 
 
 def homepage(request):

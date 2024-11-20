@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div id="PucAgora">
+    <link rel="stylesheet" href="{% static 'css/PucAgora.css' %}">
+    <script src="{% static 'js/PucAgora.js' %}"></script>
+
+    <div id="CampoPrincipal">
+
+        <div id="BlocoDireito">
+            
+            <div id="AreaDeInformacoes">
+                <div id="TituloAreaDeInformacoes">Relevante</div>
+                <div class="InformacaoFixa">Cardápio bandejas</div>
+                <div class="InformacaoFixa">Alguma Coisa 1</div>
+                <div class="InformacaoFixa">Alguma Coisa 2</div>
+
+            </div>
+            
+        </div>
+            
+        <div id="BtnAddNot" onclick="AdicionarNoticia()"></div>
+        
+    </div>
+        
+</div>
+
+{% endblock %}
