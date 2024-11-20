@@ -25,7 +25,6 @@ function carregarNoticias() { // FEED
         })
     }
     
-        
 // Essa função abre uma notícia expandida em um modal
 function abrirNoticia(noticia, event) {
     abrirModal()

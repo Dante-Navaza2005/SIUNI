@@ -77,6 +77,19 @@ def puc_agora(request) :
     return render(request, "PucAgora.html", context)
 
 
+def feed(request) :
+    context = {}
+    return render(request, "PucAgora/Feed.html", context)
+
+def mapa(request) :
+    context = {}
+    return render(request, "PucAgora/Mapa.html", context)
+
+def siuni_mais(request) :
+    context = {}
+    return render(request, "PucAgora/SiuniMais.html", context)
+
+
 def homepage(request):
     # Obter todos os usuários e as informações associadas
     usuarios = Usuario.objects.select_related('aluno', 'professor').all()

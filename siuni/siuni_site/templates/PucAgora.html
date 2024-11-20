@@ -3,11 +3,39 @@
 
 {% block body %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'css/PucAgora.css' %}">
+<script src="{% static 'js/PucAgora.js' %}"></script>
+
+
 <div id="PucAgora">
-    <link rel="stylesheet" href="{% static 'css/PucAgora.css' %}">
-    <script src="{% static 'js/PucAgora.js' %}"></script>
 
     <div id="CampoPrincipal">
+
+        <!--Esquerdo-->
+        
+        <div id="BlocoEsquerdo">
+            
+            <div id="AreaDeAbas"> 
+                <div class="ABA"> 
+                    <a href="{% url 'feed' %}">Feed</a>
+                </div>
+                <div class="ABA"> 
+                    <a href="{% url 'mapa' %}">Mapa</a>
+                </div>
+                <div class="ABA"> 
+                    <a href="{% url 'siuni_mais' %}">Siuni +</a>
+                </div>
+            </div>
+            
+            
+            <div id="AreaDeConteudo">
+                {%block div%}
+                {%endblock %}
+            </div>
+            
+        </div>
+        
+        <!--Direito-->
 
         <div id="BlocoDireito">
             
@@ -16,7 +44,6 @@
                 <div class="InformacaoFixa">Cardápio bandejas</div>
                 <div class="InformacaoFixa">Alguma Coisa 1</div>
                 <div class="InformacaoFixa">Alguma Coisa 2</div>
-
             </div>
             
         </div>
@@ -26,5 +53,7 @@
     </div>
         
 </div>
+
+
 
 {% endblock %}

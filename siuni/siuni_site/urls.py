@@ -5,7 +5,11 @@ urlpatterns = [
     path('fazer_login/', fazer_login, name="fazer_login"), 
     path('perfil/', perfil, name="perfil"), 
     path('calendario/', calendario, name="calendario"), 
-    path('meu_curso/', meu_curso, name="meu_curso"), 
-    path('puc_agora/', puc_agora, name="puc_agora"), 
+    path('meuCurso/', meu_curso, name="meu_curso"), 
+    path('pucAgora/', puc_agora, name="puc_agora"), 
+    path('pucAgora/feed', feed, name="feed"), 
+    path('pucAgora/mapa', mapa, name="mapa"), 
+    path('pucAgora/siuniMais', siuni_mais, name="siuni_mais"), 
+    
     path('', homepage, name="homepage"), #? first parameter is the url, second is what function will be runned at the url, and the third is the internal name of the link used to reference the link regardless of its url domain
 ]
