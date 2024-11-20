@@ -13,7 +13,7 @@ function construirMeuCurso() {
 function meuCursoAdicionarCelulas() {
     var grade = document.getElementById('MeuCursoAreaGradeGrade')
     var rows = 5 + 1
-    var cols = 20 + 1
+    var cols = 5 + 1
 
     grade.style.gridTemplateColumns=`repeat(${cols}, 1fr)`
     grade.style.gridAutoRows=`1fr`
@@ -46,7 +46,7 @@ function meuCursoAjustarCelulas() {
         celulasDeHoras[i].innerHTML = `Hora ${i}` }
 
 
-    }
+    } 
 
 function diaEmPortugues(numeroDia) {
 
