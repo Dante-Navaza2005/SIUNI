@@ -8,6 +8,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 
+from django.http import HttpResponse
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+
 def fazer_login(request):
     if request.method == 'POST':
         matricula = request.POST.get('matricula')
@@ -117,3 +121,20 @@ def homepage(request):
     }
 
     return render(request, 'homepage.html', context)
+
+
+
+
+def carregar_modal(request, modal_name):
+    try:
+        # Contexto para o modal (adicione as variáveis que desejar)
+        context = {
+            'titulo': 'SIUNI',
+            'subtitulo': 'Quem Somos Nós?',
+            'descricao': 'O SIUNI é um projeto idealizado e programado por Davi Donato e sua turma.'
+        }
+
+        # Renderiza o modal com base no nome passado
+        return render(request, f'Modais/{modal_name}.html', context)
+    except Exception as e:
+        return HttpResponse(f"<h1>Erro ao carregar o modal: {e}</h1>", status=404)

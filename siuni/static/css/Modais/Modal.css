@@ -8,6 +8,7 @@
     display: none;
     flex-direction: column; justify-content: center; align-items: center;
     display: flex;
+    z-index: 2 !important;
     }
 
 #ModalCampoPrincipal {

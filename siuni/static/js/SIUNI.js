@@ -1,3 +1,4 @@
+let isOpenModal = 0
 
 function mudaCorBotao(event) {
     let botaoAtual = event.currentTarget

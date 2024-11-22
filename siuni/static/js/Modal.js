@@ -1,36 +1,58 @@
 
 var SIUNI = document.getElementById("SIUNI")
 
-function abrirModal(event) {
+function abrirModal(event, modalName) {
     if (isOpenModal == 0) {
-        let Modal = document.createElement('div')
-        Modal.id = 'Modal'
+        let Modal = document.createElement('div');
+        Modal.id = 'Modal';
 
-        fetch('Modais/Modal.html')
+        // Carrega o modal base (Modal.html)
+        fetch(`/modal/Modal/`)
             .then(resposta => resposta.text())
-            .then(respostaTexto => { Modal.innerHTML = respostaTexto })
-            .catch(error => console.log("Não foi possivel carregar: ", error ) )
+            .then(respostaTexto => {
+                Modal.innerHTML = respostaTexto; // Insere o conteúdo do modal base
+                const modalConteudo = Modal.querySelector('#ModalConteudo'); // Seleciona o "ModalConteudo"
 
-        SIUNI.appendChild(Modal)
-        isOpenModal = 1
-        }
-    }
-
-
-function carregarConteudoModal(conteudo) {
-    if (isOpenModal == 1) {
-        foundAndExecute('ModalConteudo', ()=> {
-            fetch(conteudo)
-                .then(resposta => resposta.text())
-                .then(respostaTexto => {   
-                    var cntmdl = document.getElementById('ModalConteudo')
-                    cntmdl.innerHTML = respostaTexto })
-                .catch(error => console.log("Não foi possivel carregar: ", error ) )
+                if (modalConteudo) {
+                    // Carrega o conteúdo dinâmico (conteudoSobreSiuni.html) para o "ModalConteudo"
+                    fetch(`/modal/${modalName}/`)
+                        .then(resposta => resposta.text())
+                        .then(html => {
+                            modalConteudo.innerHTML = html; // Insere o conteúdo carregado no ModalConteudo
+                            SIUNI.appendChild(Modal); // Adiciona o modal ao DOM somente após tudo estar pronto
+                            isOpenModal = 1; // Marca o modal como aberto
+                        })
+                        .catch(error => console.log("Erro ao carregar conteúdo do modal:", error));
+                } else {
+                    console.error("Elemento #ModalConteudo não encontrado no modal base.");
+                }
             })
+            .catch(error => console.log("Erro ao carregar o modal base:", error));
+    }
+}
 
-        }
-    } 
 
+    function carregarConteudoModal(modalName) {
+        fetch(`/modal/${modalName}/`)
+            .then(resposta => {
+                if (!resposta.ok) {
+                    throw new Error(`Erro ao carregar modal: ${resposta.status}`);
+                }
+                return resposta.text(); // Retorna o HTML completo
+            })
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const modalConteudo = doc.querySelector('#ModalConteudo'); // Obtém apenas o conteúdo necessário
+    
+                const modalDiv = document.getElementById('ModalConteudo');
+                if (modalConteudo && modalDiv) {
+                    modalDiv.innerHTML = modalConteudo.innerHTML; // Insere o conteúdo no modal
+                } 
+            })
+            .catch(error => console.error("Erro ao carregar conteúdo do modal:", error));
+    }
+    
 
 
 

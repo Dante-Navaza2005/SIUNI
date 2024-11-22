@@ -65,9 +65,5 @@ function AbrirDetalhesDoEvento(event) {
         }
 
 
-    }    
-
-
-
-    
+    }
 

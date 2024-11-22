@@ -13,7 +13,7 @@ div#PucAgora {
 div#BarraFixa {
     background-color: var(--BackgroundColor);
     filter: brightness(1); /* Deixa a cor 20% mais escura */
-    z-index: 1 !important;
+    z-index:  1 !important;
 }
 /* CAMPO PRINCIPAL -------------------------------------------------------------------------------- */
 
