@@ -12,7 +12,12 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 
+from .utils import *
+
 def fazer_login(request):
+    error = None
+
+    #! FAZENDO O LOGIN
     if request.method == 'POST':
         matricula = request.POST.get('matricula')
         senha = request.POST.get('senha')
@@ -27,42 +32,31 @@ def fazer_login(request):
             # Inicia o ChromeDriver automaticamente usando webdriver-manager
             driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-            # Acessar o site do SAU e realizar o login
-            driver.get('https://sau.puc-rio.br/WebLoginPucOnline/Default.aspx?sessao=VmluY3Vsbz1BJlNpc3RMb2dpbj1QVUNPTkxJTkVfQUxVTk8mQXBwTG9naW49TE9HSU4mRnVuY0xvZ2luPUxPR0lOJlNpc3RNZW51PVBVQ09OTElORV9BTFVOTyZBcHBNZW51PU1FTlUmRnVuY01lbnU9TUVOVQ__')
-            sleep(1)
-
-            # Preencher os campos de login e senha
-            CaixaMatricula = driver.find_element(By.CSS_SELECTOR, 'input#txtLogin')
-            CaixaMatricula.send_keys(matricula)
-            sleep(1)
-
-            CaixaSenha = driver.find_element(By.CSS_SELECTOR, 'input#txtSenha')
-            CaixaSenha.send_keys(senha)
-            sleep(1)
-
-            # Clicar no botão de login
-            CaixaBotao = driver.find_element(By.CSS_SELECTOR, '#btnOk')
-            CaixaBotao.click()
-            sleep(2)
+            preencher_login(driver,matricula,senha)
 
             # Verificar se o login foi bem-sucedido
             page_content = driver.page_source
-            driver.quit()
             
+            #!LOGIN FINALIZADO
             if "Atividades Complementares" in page_content:
+                #!LOGIN SUCEDIDO
+                
+                driver.quit()
                 return redirect('homepage')  # Redireciona para evitar reenvio de formulário
             else:
-                # Armazena a mensagem de erro na sessão para exibir após o redirecionamento
-                request.session['error'] = 'Login falhou. Verifique seus dados e tente novamente.'
-                return redirect('fazer_login')
-
+                #!LOGIN FALHOU
+                error = 'Login falhou. Verifique seus dados e tente novamente.'
+                driver.quit()
+                return render(request, 'login.html', {'error': error})
+            
+        #! PROBLEMA NO DRIVER
         except (NoSuchElementException, WebDriverException):
-            request.session['error'] = 'Erro ao realizar o login. Tente novamente mais tarde.'
-            return redirect('fazer_login')
+            error = 'Erro ao realizar o login. Tente novamente mais tarde.'
+            return render(request, 'login.html', {'error': error})
 
-    # Carrega a mensagem de erro da sessão, se existir
-    error = request.session.pop('error', None)
-    return render(request, 'Login.html', {'error': error})
+
+    #! USUARIO REINICIA A PAGINA
+    return render(request, 'login.html', {'error': error})
 
 def perfil(request) :
     context = {}

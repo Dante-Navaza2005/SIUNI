@@ -15,6 +15,7 @@
 <body>
     <link rel="stylesheet" type="text/css" href="{% static 'css/Login.css' %}">
     <link rel="stylesheet" href="{% static 'css/_Raiz.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 
     <div id="LOGIN">
         <div id="BySIUNI" class="surgindo">
@@ -45,16 +46,16 @@
                 </div>
             </form>
             </div>
+            <a id="OP-TEMA-COR" class="OPCF" onclick="alternaTema()">
+            <i id="IconOptionTheme" class="bi bi-lightbulb-fill OptionIcon"></i>
+            <span class="OptionText">Trocar Tema</span>
+            </a>  
         </div>
+    </div>
 
-        <a id="OP-TEMA-COR" class="OPCF" onclick="alternaTema()">
-        <i id="IconOptionTheme" class="bi bi-lightbulb-fill OptionIcon"></i>
-        <span class="OptionText">Trocar Tema</span>
-        </a>  
     
     <script src="{% static 'js/Main.js' %}"></script>
     <script src="{% static 'js/Configuracoes/Configuracoes.js' %}"></script>
-    <script src="{% static 'js/Configuracoes/SobreSiuni.js' %}"></script>
     <script src="{% static 'js/SIUNI.js' %}"></script>
     <script src="https://kit.fontawesome.com/f196a55506.js" crossorigin="anonymous"></script>
 </body>

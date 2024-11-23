@@ -73,9 +73,17 @@ function alternaTema() {
 }
 
 // Aplica o tema ao carregar a página
+function temaSistemaOperacional() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
+    } else {
+        return 'dark';
+    }
+}
+
+// Aplica o tema ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
-    const temaSalvo = localStorage.getItem('temaAtual') || 'dark';
-    aplicaTema(temaSalvo);
+    const temaSalvo = localStorage.getItem('temaAtual');
+    const temaInicial = temaSalvo || temaSistemaOperacional(); // Usa o tema salvo ou o do sistema
+    aplicaTema(temaInicial);
 });
-
-
