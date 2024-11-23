@@ -11,83 +11,122 @@ from selenium.common.exceptions import NoSuchElementException, WebDriverExceptio
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+
+
 
 from .utils import *
 
 def fazer_login(request):
     error = None
+    context = {}
 
     #! FAZENDO O LOGIN
     if request.method == 'POST':
         matricula = request.POST.get('matricula')
         senha = request.POST.get('senha')
 
-        # Configuração do Selenium para login automático
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-gpu")
+        user = authenticate(username=matricula, password=senha)
 
-        try:
-            # Inicia o ChromeDriver automaticamente usando webdriver-manager
-            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+        if not user :
+            # Configuração do Selenium para login automático
+            chrome_options = Options()
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument("--no-sandbox")
+            chrome_options.add_argument("--disable-gpu")
 
-            preencher_login(driver,matricula,senha)
+            try:
+                # Inicia o ChromeDriver automaticamente usando webdriver-manager
+                driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-            # Verificar se o login foi bem-sucedido
-            page_content = driver.page_source
-            
-            #!LOGIN FINALIZADO
-            if "Atividades Complementares" in page_content:
-                #!LOGIN SUCEDIDO
+                preencher_login(driver, matricula, senha)
                 
-                driver.quit()
-                return redirect('homepage')  # Redireciona para evitar reenvio de formulário
-            else:
-                #!LOGIN FALHOU
-                error = 'Login falhou. Verifique seus dados e tente novamente.'
-                driver.quit()
-                return render(request, 'login.html', {'error': error})
-            
-        #! PROBLEMA NO DRIVER
-        except (NoSuchElementException, WebDriverException):
-            error = 'Erro ao realizar o login. Tente novamente mais tarde.'
-            return render(request, 'login.html', {'error': error})
+
+                # Verificar se o login foi bem-sucedido
+                page_content = driver.page_source
+
+                if "Atividades Complementares" in page_content:
+                    # Verificar se o usuário já existe
+                    user, created = User.objects.get_or_create(username=matricula)
+                    
+                    if created:
+                        # Define a senha e salva o usuário, caso seja uma nova conta
+                        user.set_password(senha)
+                        user.save()
+
+                    # Autenticar e realizar o login
+                    user = authenticate(request, username=matricula, password=senha)
+                    login(request, user)
+                    #! LOGIN FEITO COM SUCESSO
+                    nome = driver.find_element(By.XPATH, "//li[@id='liUsuarioMatricula']//span[@id='lblNomeUsuario']/b").text
+
+                    usuario, created = Usuario.objects.get_or_create(nome_usuario=nome, user=user, matricula=matricula,tipo_de_usuario='Aluno')
+
+                    context = {'usuario' : usuario}
+
+                    driver.quit()
+                    return redirect('/pucAgora/feed')
+                else:
+                    #!LOGIN FALHOU
+                    request.session['error'] = 'Login falhou. Verifique seus dados e tente novamente.'
+                    driver.quit()
+                    return redirect('fazer_login')
+
+            #! PROBLEMA NO DRIVER
+            except (NoSuchElementException, WebDriverException):
+                request.session['error'] = 'Erro ao realizar o login. Tente novamente mais tarde.'
+                return redirect('fazer_login')
+        else :
+            login(request, user)
+            usuario = Usuario.objects.get(matricula=matricula, user=user)
+            context = {'usuario' : user}
+            return redirect('/pucAgora/feed')
 
 
     #! USUARIO REINICIA A PAGINA
+    error = request.session.pop('error', None)
     return render(request, 'login.html', {'error': error})
 
+
+@login_required
 def perfil(request) :
     context = {}
     return render(request, "Perfil.html", context)
 
+@login_required
 def calendario(request) :
     context = {}
     return render(request, "Calendario.html", context)
-
+@login_required
 def meu_curso(request) :
     context = {}
     return render(request, "MeuCurso.html", context)
 
+@login_required
 def puc_agora(request) :
     context = {}
     return render(request, "PucAgora.html", context)
 
 
+@login_required
 def feed(request) :
-    context = {}
+    usuario = request.usuario
+    context = {'usuario': usuario}
     return render(request, "PucAgora/Feed.html", context)
 
+@login_required
 def mapa(request) :
     context = {}
     return render(request, "PucAgora/Mapa.html", context)
 
+@login_required
 def siuni_mais(request) :
     context = {}
     return render(request, "PucAgora/SiuniMais.html", context)
 
 
+@login_required
 def homepage(request):
     # Obter todos os usuários e as informações associadas
     usuarios = Usuario.objects.select_related('aluno', 'professor').all()
@@ -119,6 +158,7 @@ def homepage(request):
 
 
 
+@login_required
 def carregar_modal(request, modal_name):
     try:
         # Contexto para o modal (adicione as variáveis que desejar)
@@ -132,3 +172,23 @@ def carregar_modal(request, modal_name):
         return render(request, f'Modais/{modal_name}.html', context)
     except Exception as e:
         return HttpResponse(f"<h1>Erro ao carregar o modal: {e}</h1>", status=404)
+    
+
+
+@login_required
+def fazer_logout(request) :
+    logout(request)
+    return redirect('fazer_login')
+
+
+def custom_404_view(request, exception):
+    if not request.user.is_authenticated:
+        # Redireciona para a tela de login se o usuário não estiver autenticado
+        return redirect('fazer_login')
+    else:
+        # Mostra uma página de erro personalizada se o usuário estiver logado
+        return render(request, '404.html', status=404)
+    
+
+
+
