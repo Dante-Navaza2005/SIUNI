@@ -5,9 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIUNI</title>
+
+    <script>
+        // Configura o tema antes de carregar o CSS
+        const temaSalvo = localStorage.getItem('temaAtual') || 'dark';
+        document.documentElement.classList.add(temaSalvo === 'light' ? 'lightTheme' : 'darkTheme');
+    </script>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="{% static 'css/Login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/_Raiz.css' %}">
+
     <div id="LOGIN">
         <div id="BySIUNI" class="surgindo">
             <div id="LogoSIUNI"></div>
@@ -38,5 +46,15 @@
             </form>
             </div>
         </div>
+
+        <a id="OP-TEMA-COR" class="OPCF" onclick="alternaTema()">
+        <i id="IconOptionTheme" class="bi bi-lightbulb-fill OptionIcon"></i>
+        <span class="OptionText">Trocar Tema</span>
+        </a>  
+    
+    <script src="{% static 'js/Main.js' %}"></script>
+    <script src="{% static 'js/Configuracoes/Configuracoes.js' %}"></script>
+    <script src="{% static 'js/Configuracoes/SobreSiuni.js' %}"></script>
+    <script src="{% static 'js/SIUNI.js' %}"></script>
     <script src="https://kit.fontawesome.com/f196a55506.js" crossorigin="anonymous"></script>
 </body>

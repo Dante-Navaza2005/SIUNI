@@ -166,3 +166,13 @@ class MediaFinal(models.Model):
 
     def __str__(self):
         return f'Aluno {self.aluno.usuario.nome_usuario} - Disiplina {self.disciplina.nome_disciplina} - Media Final {self.media_final}'
+
+
+class Noticia(models.Model) :
+    titulo = models.CharField(max_length=200, null = True, blank = True)
+    autor = models.CharField(max_length=200, null = True, blank = True)
+    legenda = models.CharField(max_length=200, null = True, blank = True)
+    descricao = models.CharField(max_length=200, null = True, blank = True)
+
+    def __str__(self):
+        return f'{self.titulo} - {self.legenda}'

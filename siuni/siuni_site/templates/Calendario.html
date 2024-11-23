@@ -7,44 +7,33 @@
 <script src="{% static 'js/CalendarioPuc.js' %}"></script>
 
 
-<div id="CalendarioPuc" onload="HorarioAtualizado()">
+<div id="CalendarioPuc">
     <div id="CalendarioCampoCentral">
 
         <div id="CalendarioSuperior">
-            <div id="Mes">NOVEMBRO</div>
-            <div id="Data" ></div>
+            <div class="MesAno">
+                <button class="SetaMes" onclick="alterarMes(-1)">&#10094;</button>
+                <div id="MesAno">
+                    <span id="Mes">NOVEMBRO</span>
+                    <span id="Ano">2024</span>
+                </div>
+                <button class="SetaMes" onclick="alterarMes(1)">&#10095;</button>
+            </div>
+            <div id="SemanaNumero">Semana 1</div>
+            <div id="DataTexto">Hoje é Sexta-feira, 22 de Novembro de 2024, 10:03:06</div>
         </div>
 
         <div id="CalendarioInferior">
-
-                <div id="Segunda" class="Dia"> 
-                    <div class="DiaTitulo">SEG</div> 
-                    <div class="DiaEventos">
-                         
-                        <div class="Evento" onclick="AbrirDetalhesDoEvento(event)">
-                            <div class="SubEvento">
-                                <div class="EmissorEvento">PUC</div>
-                                <div class="DescricaoEvento">bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla bla</div>
-                                <div class="HorarioEvento">12-18h</div>
-                            </div>
-                        </div>
-
-
-                    </div> 
-                </div>
-
-                <div id="Terca"   class="Dia"> <div class="DiaTitulo">TER</div> <div class="DiaEventos" id="DiaEvtTerca" ></div> </div>
-                <div id="Quarta"  class="Dia"> <div class="DiaTitulo">QUA</div> <div class="DiaEventos" id="DiaEvtQuarta"></div> </div>
-                <div id="Quinta"  class="Dia"> <div class="DiaTitulo">QUI</div> <div class="DiaEventos" id="DiaEvtQuinta"></div> </div>
-                <div id="Sexta"   class="Dia"> <div class="DiaTitulo">SEX</div> <div class="DiaEventos"></div> </div>
-                <div id="Sabado"  class="Dia"> <div class="DiaTitulo">SAB</div> <div class="DiaEventos"></div> </div>
-                <div id="Domingo" class="Dia"> <div class="DiaTitulo">DOM</div> <div class="DiaEventos"></div> </div>
-
+            <!-- Estrutura da semana será atualizada dinamicamente -->
         </div>
-        
-    </div>
-    
 
+        <div class="SemanaNavegacao">
+            <button class="SetaSemana" onclick="alterarSemana(-1)">&#10094; Semana Anterior</button>
+            <button class="SetaSemana" onclick="alterarSemana(1)">Próxima Semana &#10095;</button>
+        </div>
+    </div>
 </div>
+
+
 
 {% endblock %}

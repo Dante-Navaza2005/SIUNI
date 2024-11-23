@@ -1,69 +1,128 @@
+let mesAtual = new Date().getMonth();
+let anoAtual = new Date().getFullYear();
+let semanaAtual = 1;
 
-    
-// DATA ------------------------------------------------------------------------------------------- >>>
+const nomesDosMeses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+const diasDaSemana = ["SEG", "TER", "QUA", "QUI", "SEX", "SAB", "DOM"];
+
+function alterarMes(direcao) {
+    mesAtual += direcao;
+
+    if (mesAtual < 0) {
+        mesAtual = 11;
+        anoAtual--;
+    } else if (mesAtual > 11) {
+        mesAtual = 0;
+        anoAtual++;
+    }
+
+    semanaAtual = 1; // Reinicia para a primeira semana ao mudar de mês
+    atualizarCalendario();
+}
+
+function alterarSemana(direcao) {
+    semanaAtual += direcao;
+
+    const semanasNoMes = Math.ceil((obterDiasDoMes(mesAtual, anoAtual) + obterPrimeiroDiaDaSemana(mesAtual, anoAtual)) / 7);
+
+    if (semanaAtual < 1) {
+        alterarMes(-1);
+        const semanasMesAnterior = Math.ceil((obterDiasDoMes(mesAtual, anoAtual) + obterPrimeiroDiaDaSemana(mesAtual, anoAtual)) / 7);
+        semanaAtual = semanasMesAnterior;
+    } else if (semanaAtual > semanasNoMes) {
+        alterarMes(1);
+        semanaAtual = 1;
+    }
+
+    atualizarCalendario();
+}
+
+function obterDiasDoMes(mes, ano) {
+    return new Date(ano, mes + 1, 0).getDate();
+}
+
+function obterPrimeiroDiaDaSemana(mes, ano) {
+    const primeiroDiaDoMes = new Date(ano, mes, 1).getDay(); // Primeiro dia do mês
+    return (primeiroDiaDoMes + 6) % 7; // Ajusta para segunda-feira como primeiro dia
+}
+
+function atualizarCalendario() {
+    const elementoMes = document.getElementById("Mes");
+    const elementoAno = document.getElementById("Ano");
+    const elementoSemana = document.getElementById("SemanaNumero");
+    const elementoCalendarioInferior = document.getElementById("CalendarioInferior");
+
+    elementoMes.textContent = nomesDosMeses[mesAtual];
+    elementoAno.textContent = anoAtual;
+    elementoSemana.textContent = `Semana ${semanaAtual}`;
+
+    elementoCalendarioInferior.innerHTML = "";
+
+    const diasNoMes = obterDiasDoMes(mesAtual, anoAtual);
+    const primeiroDiaDaSemana = obterPrimeiroDiaDaSemana(mesAtual, anoAtual);
+    const inicioSemana = (semanaAtual - 1) * 7 - primeiroDiaDaSemana + 1;
+    const fimSemana = inicioSemana + 6;
+
+    diasDaSemana.forEach((dia, index) => {
+        const diaNumero = inicioSemana + index;
+
+        // Verifica se o dia está fora do mês atual
+        if (diaNumero <= 0 || diaNumero > diasNoMes) {
+            return; // Ignora a criação de colunas vazias
+        }
+
+        const diaDiv = document.createElement("div");
+        diaDiv.classList.add("Dia");
+
+        const diaTitulo = document.createElement("div");
+        diaTitulo.classList.add("DiaTitulo");
+        diaTitulo.textContent = `${dia} ${diaNumero}`;
+
+        diaDiv.appendChild(diaTitulo);
+
+        const eventosDiv = document.createElement("div");
+        eventosDiv.classList.add("DiaEventos");
+        diaDiv.appendChild(eventosDiv);
+
+        // Adiciona destaque ao dia atual
+        const hoje = new Date();
+        if (
+            anoAtual === hoje.getFullYear() &&
+            mesAtual === hoje.getMonth() &&
+            diaNumero === hoje.getDate()
+        ) {
+            diaDiv.classList.add("DiaAtual");
+        }
+
+        elementoCalendarioInferior.appendChild(diaDiv);
+    });
+}
+
+// Inicializa o calendário e a hora ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+    atualizarCalendario();
+    HorarioAtualizado();
+});
+
+setInterval(HorarioAtualizado, 1000);
 
 function HorarioAtualizado() {
-    const ElementoHora = document.getElementById("Data")
-    if (ElementoHora) {
-        var DataAtual = new Date()
-    
-        var Dia = String(DataAtual.getDate()).padStart(2, '0');
-        var Mes = String(DataAtual.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
-        var Ano = DataAtual.getFullYear();
-        
-        var Horas = String(DataAtual.getHours()).padStart(2, '0')
-        var Minutos = String(DataAtual.getMinutes()).padStart(2, '0')
-        var Segundos = String(DataAtual.getSeconds()).padStart(2, '0')
-        
-        var HorarioFormatado = `${Dia}/${Mes}/${Ano} ${Horas}:${Minutos}:${Segundos}`
-        
-        ElementoHora.textContent = HorarioFormatado
-        }
-    }    
+    const elementoHora = document.getElementById("DataTexto");
+    if (elementoHora) {
+        const dataAtual = new Date();
 
-setInterval(HorarioAtualizado, 1000)    
+        const diasDaSemanaTexto = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+        const mesesTexto = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
-function AdicionarEvento() {
-    let Evento = document.createElement('div')
-    fetch('../HTML/Elementos/Evento.html')
-        .then(resposta => resposta.text())
-        .then(html => {Evento.innerHTML = html; Evento.classList.add("Evento")})
-        .catch(error => { console.error('Erro erro', error); });
-    
-    const feed = document.getElementById('DiaEvtQuinta')    
-    feed.appendChild(Evento)
+        const diaSemana = diasDaSemanaTexto[dataAtual.getDay()];
+        const dia = String(dataAtual.getDate()).padStart(2, "0");
+        const mes = mesesTexto[dataAtual.getMonth()];
+        const ano = dataAtual.getFullYear();
+
+        const horas = String(dataAtual.getHours()).padStart(2, "0");
+        const minutos = String(dataAtual.getMinutes()).padStart(2, "0");
+        const segundos = String(dataAtual.getSeconds()).padStart(2, "0");
+
+        elementoHora.textContent = `Hoje é ${diaSemana}, ${dia} de ${mes} de ${ano}, ${horas}:${minutos}:${segundos}`;
     }
-
-
-
-// Detalhes do evento ----------------------------------------------------------------------------- >>>    
-let OPEN = 0
-
-function AbrirDetalhesDoEvento(event) {
-    if (OPEN == 0) {
-        console.log("AQUIII")
-        let evento = event.currentTarget
-        let modalEvento = document.createElement("div")
-    
-        fetch('Modais/Modal_Evento.html')
-            .then(response => response.text())
-            .then(data => { 
-                modalEvento.classList.add("ModalEvento")
-                modalEvento.innerHTML = data 
-                evento.appendChild(modalEvento)
-                } )
-            .catch(error => console.log("Não foi possivel carregar: ", error ) )    
-        OPEN = 1    
-        }
-    else {
-        let evento = event.currentTarget
-        let modalEvento = document.getElementsByClassName("ModalEvento")[0]
-
-        evento.removeChild( modalEvento )
-
-        OPEN = 0
-        }
-
-
-    }
-
+}

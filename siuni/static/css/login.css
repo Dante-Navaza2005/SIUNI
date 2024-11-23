@@ -4,10 +4,37 @@
 html, body { height: 100%; width: 100%; }
 
 body { 
-    background-image: linear-gradient(to bottom, #00021d, #001242);
+    background-color: var(--BackgroundColor);
     background-size: 100% 200%;
     font-family: "Lexend", sans-serif; font-optical-sizing: auto; font-weight: 200; font-style: normal;
     }
+
+#OP-TEMA-COR {
+    display: inline-flex; /* Para alinhar o ícone e o texto lado a lado */
+    align-items: center; /* Centraliza os itens verticalmente */
+    padding: 5px 8px; /* Espaçamento interno menor */
+    font-size: 0.8rem; /* Reduz o tamanho do texto */
+    border: 1px solid #ccc; /* Adiciona uma borda fina (opcional) */
+    border-radius: 5px; /* Arredonda as bordas */
+    background-color: #f9f9f9; /* Cor de fundo clara */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transição suave para hover */
+}
+
+#OP-TEMA-COR:hover {
+    background-color: #e0e0e0; /* Muda a cor de fundo ao passar o mouse */
+}
+
+#IconOptionTheme {
+    font-size: 1rem; /* Reduz o tamanho do ícone */
+    margin-right: 5px; /* Espaço entre o ícone e o texto */
+}
+
+.OptionText {
+    font-size: 0.8rem; /* Reduz o tamanho do texto */
+}
+    
+
 
 #BySIUNI {
     position: fixed;

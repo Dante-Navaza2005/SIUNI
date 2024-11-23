@@ -110,7 +110,7 @@ body {
     font-size: 2rem;
     color: --FontColor;
     position: relative;
-    transition: 0.5s;
+    transition: 0.4s;
     cursor: pointer;
     }
 
