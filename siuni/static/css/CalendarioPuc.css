@@ -384,10 +384,11 @@ div#CalendarioInferior > *:first-child {
     display: none;
 }
 
+}
 
 
-
-
-
-
+#abaCalendario {
+    background-color: var(--MateriaBackgroundColor);
+    filter: brightness(.8);
+    
 }

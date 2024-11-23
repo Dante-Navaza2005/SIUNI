@@ -27,6 +27,10 @@ def fazer_login(request):
         matricula = request.POST.get('matricula')
         senha = request.POST.get('senha')
 
+        if matricula is '' or senha is '' :
+            request.session['error'] = 'Preencha os campos corretamente'
+            return redirect('fazer_login')
+
         user = authenticate(username=matricula, password=senha)
 
         if not user :
@@ -67,13 +71,13 @@ def fazer_login(request):
                     return redirect('/pucAgora/feed')
                 else:
                     #!LOGIN FALHOU
-                    request.session['error'] = 'Login falhou. Verifique seus dados e tente novamente.'
+                    request.session['error'] = 'Dados inválidos. Tente novamente.'
                     driver.quit()
                     return redirect('fazer_login')
 
             #! PROBLEMA NO DRIVER
             except (NoSuchElementException, WebDriverException):
-                request.session['error'] = 'Erro ao realizar o login. Tente novamente mais tarde.'
+                request.session['error'] = 'Erro ao realizar o login. Teste mais tarde ou em outro browser.'
                 return redirect('fazer_login')
         else :
             login(request, user)

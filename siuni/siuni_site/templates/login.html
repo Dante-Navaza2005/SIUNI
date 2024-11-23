@@ -39,7 +39,7 @@
                 </div>
 
                 <div id="BlocoEnviar" class="Bloco">
-                    <button type="submit" id="BotaoEnviar" onclick="exibirMensagemEspera()">Enviar</button>
+                    <button type="submit" id="BotaoEnviar" onclick="exibirMensagemEspera(this)">Enviar</button>
                     {% if error %}
                         {{ error }}
                     {% endif %}
@@ -49,7 +49,7 @@
                             <span class="bolinha"></span>
                             <span class="bolinha"></span>
                         </div>
-                        <p>Aguarde, verificando nossos sistemas...</p>
+                        <p>Porfavor aguarde, estamos verificando nossos sistemas...</p>
                     </div>
                 </div>
             </form>

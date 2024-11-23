@@ -17,6 +17,11 @@
 #PucAgoraMapa::-moz-scrollbar {
     display: none;
 }
+
+#ABA-MAPA {
+    background-color: var(--MateriaBackgroundColor);
+}
+
 @media (max-width: 1300px) {
     #BlocoDireito {
         display: none !important;

@@ -89,14 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function exibirMensagemEspera() {
+function exibirMensagemEspera(botao) {
     const mensagemEspera = document.getElementById('MensagemEspera');
+
 
     if (!mensagemEspera) {
         console.error('Elemento #MensagemEspera não encontrado no DOM.');
         return;
     }
 
-    console.log('Exibindo mensagem de espera.');
     mensagemEspera.style.display = 'flex'; // Mostra a mensagem de espera
+    botao.style.display = 'none'
 }

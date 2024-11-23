@@ -12,7 +12,9 @@ div#Feed::-webkit-scrollbar {
     display: none; /* Chrome, Safari e Opera */
 
     }
-
+    #ABA-FEED {
+        background-color: var(--MateriaBackgroundColor);
+    }
 
 
 

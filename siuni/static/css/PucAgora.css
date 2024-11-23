@@ -46,7 +46,7 @@ div#AreaDeAbas {
     gap: 10px;
     }
 
-div.ABA {
+a.ABA {
     flex: 1;
     font-weight: 400;
     padding: 7px;
@@ -58,7 +58,10 @@ div.ABA {
     transition: 0.4s;
     }
 
-
+    .ABA:hover {
+        background-color: var(--HoverItemBackgroundColor) !important;
+    }
+    
  
     
 /* NOTICIA ====================================== */
@@ -173,6 +176,7 @@ div.ABA {
     }
 
 
+
 /* NOTICIA ====================================== */
 
 #AreaDeConteudo { 
@@ -230,7 +234,11 @@ div#AreaDeConteudo::-webkit-scrollbar {
 
 
 
-
+#abaPucAgora {
+    background-color: var(--MateriaBackgroundColor);
+    filter: brightness(.8);
+    
+}
 
 
 

@@ -162,6 +162,14 @@
 
     }
 
+    #abaMeuCurso {
+        background-color: var(--MateriaBackgroundColor);
+        filter: brightness(.8);
+        
+    }
+    
+    
+
 /* RESPONSIVO ===================================================================================== */
 
 @media (max-width: 1300px ) {

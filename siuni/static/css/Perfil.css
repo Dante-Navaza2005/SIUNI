@@ -125,6 +125,11 @@ img#FotoDePerfil {
 
 
 }
+#abaPerfil{
+    background-color: var(--MateriaBackgroundColor);
+    filter: brightness(.8);
+    
+}
 
 
 @media (max-width: 600px) {

@@ -16,15 +16,15 @@
         <div id="BlocoEsquerdo">
             
             <div id="AreaDeAbas"> 
-                <div class="ABA"> 
-                    <a href="{% url 'feed' %}">Feed</a>
-                </div>
-                <div class="ABA"> 
-                    <a href="{% url 'mapa' %}">Mapa</a>
-                </div>
-                <div class="ABA"> 
-                    <a href="{% url 'siuni_mais' %}">Siuni +</a>
-                </div>
+                <a href="{% url 'feed' %}" class="ABA" id="ABA-FEED"> 
+                    <div>Feed</div>
+                </a>
+                <a href="{% url 'mapa' %}" class="ABA" id="ABA-MAPA"> 
+                    <div>Mapa</div>
+                </a>
+                <a href="{% url 'siuni_mais' %}" class="ABA" id="ABA-SIUNI"> 
+                    <div>Siuni +</div>
+                </a>
             </div>
             
             
