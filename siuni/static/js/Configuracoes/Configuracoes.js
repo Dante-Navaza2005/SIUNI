@@ -87,3 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const temaInicial = temaSalvo || temaSistemaOperacional(); // Usa o tema salvo ou o do sistema
     aplicaTema(temaInicial);
 });
+
+
+function exibirMensagemEspera() {
+    const mensagemEspera = document.getElementById('MensagemEspera');
+
+    if (!mensagemEspera) {
+        console.error('Elemento #MensagemEspera não encontrado no DOM.');
+        return;
+    }
+
+    console.log('Exibindo mensagem de espera.');
+    mensagemEspera.style.display = 'flex'; // Mostra a mensagem de espera
+}

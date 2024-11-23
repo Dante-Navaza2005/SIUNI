@@ -39,13 +39,21 @@
                 </div>
 
                 <div id="BlocoEnviar" class="Bloco">
-                    <button type="submit" id="BotaoEnviar">Enviar</button>
+                    <button type="submit" id="BotaoEnviar" onclick="exibirMensagemEspera()">Enviar</button>
                     {% if error %}
                         {{ error }}
                     {% endif %}
+                    <div id="MensagemEspera">
+                        <div id="AnimacaoBolinhas">
+                            <span class="bolinha"></span>
+                            <span class="bolinha"></span>
+                            <span class="bolinha"></span>
+                        </div>
+                        <p>Aguarde, verificando nossos sistemas...</p>
+                    </div>
                 </div>
             </form>
-            </div>
+        </div>
             <a id="OP-TEMA-COR" class="OPCF" onclick="alternaTema()">
             <i id="IconOptionTheme" class="bi bi-lightbulb-fill OptionIcon"></i>
             <span class="OptionText">Trocar Tema</span>
@@ -53,8 +61,6 @@
         </div>
     </div>
 
-    
-    <script src="{% static 'js/Main.js' %}"></script>
     <script src="{% static 'js/Configuracoes/Configuracoes.js' %}"></script>
     <script src="{% static 'js/SIUNI.js' %}"></script>
     <script src="https://kit.fontawesome.com/f196a55506.js" crossorigin="anonymous"></script>

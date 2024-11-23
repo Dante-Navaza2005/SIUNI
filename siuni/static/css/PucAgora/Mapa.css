@@ -1,35 +1,34 @@
-
-
-#PucAgoraMapa {
-
-    height: 90%;
-    width: 100%;
-
-    background-image: url('../../images/MapaPuc.png') ;
+#PucAgoraMapa, #PucAgoraMapaGPS {
+    height: 60%; /* Altura padrão */
+    width: 100%; /* Largura total */
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+}
 
+#PucAgoraMapa {
+    background-image: url("/static/images/mapa.png");
+}
 
+/* Oculta barras de rolagem no navegador */
+#PucAgoraMapaGPS::-webkit-scrollbar,
+#PucAgoraMapa::-moz-scrollbar {
+    display: none;
+}
+@media (max-width: 1300px) {
+    #BlocoDireito {
+        display: none !important;
     }
+}
 
-#PucAgoraMapa::-webkit-scrollbar {
-        display: none; /* Chrome, Safari e Opera */
+/* Responsividade */
+@media (max-width: 1000px) {
+
+    #PucAgoraMapaGPS {
+        height: auto; /* Ajusta a altura automaticamente */
+        width: 100%;
+        margin-bottom: 20px; /* Espaço extra caso necessário */
     }
-    
-
-
-
-@media (max-width: 1000px) 
-    {
-    
-    #PucAgoraMapa {
-        height: 100%;
-        }
-
-
-    }
-
-
-
-
+}

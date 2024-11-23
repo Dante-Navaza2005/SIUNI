@@ -63,8 +63,6 @@ def fazer_login(request):
 
                     usuario, created = Usuario.objects.get_or_create(nome_usuario=nome, user=user, matricula=matricula,tipo_de_usuario='Aluno')
 
-                    context = {'usuario' : usuario}
-
                     driver.quit()
                     return redirect('/pucAgora/feed')
                 else:
@@ -79,14 +77,14 @@ def fazer_login(request):
                 return redirect('fazer_login')
         else :
             login(request, user)
-            usuario = Usuario.objects.get(matricula=matricula, user=user)
-            context = {'usuario' : user}
             return redirect('/pucAgora/feed')
 
 
     #! USUARIO REINICIA A PAGINA
     error = request.session.pop('error', None)
     return render(request, 'login.html', {'error': error})
+
+
 
 
 @login_required
@@ -188,7 +186,3 @@ def custom_404_view(request, exception):
     else:
         # Mostra uma página de erro personalizada se o usuário estiver logado
         return render(request, '404.html', status=404)
-    
-
-
-
