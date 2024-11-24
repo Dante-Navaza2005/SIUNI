@@ -13,6 +13,8 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+
 
 
 
@@ -124,8 +126,19 @@ def mapa(request) :
 
 @login_required
 def siuni_mais(request) :
-    context = {}
-    return render(request, "PucAgora/SiuniMais.html", context)
+    # Obtém os posts do usuário atual
+    posts = Post.objects.filter(usuario=request.usuario)
+
+    if request.method == 'POST':
+        titulo = request.POST.get('titulo')
+        descricao = request.POST.get('descricao')
+
+        # Verifica se os campos foram preenchidos
+        if titulo and descricao:
+            Post.objects.create(usuario=request.usuario, titulo=titulo, descricao=descricao)
+            return redirect('siuni_mais')  # Redireciona após criar o post
+
+    return render(request, 'PucAgora/SiuniMais.html', {'posts': posts})
 
 
 @login_required
@@ -190,3 +203,28 @@ def custom_404_view(request, exception):
     else:
         # Mostra uma página de erro personalizada se o usuário estiver logado
         return render(request, '404.html', status=404)
+
+
+
+@login_required
+def apagar_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id, usuario=request.usuario)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('siuni_mais')
+
+
+@login_required
+def editar_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id, usuario=request.usuario)
+    if request.method == 'POST':
+        titulo = request.POST.get('titulo')
+        descricao = request.POST.get('descricao')
+
+        if titulo and descricao:
+            post.titulo = titulo
+            post.descricao = descricao
+            post.save()
+            return redirect('siuni_mais')
+
+    return render(request, 'PucAgora/editar_post.html', {'post': post})

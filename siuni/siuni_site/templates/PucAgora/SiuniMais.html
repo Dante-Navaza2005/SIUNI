@@ -3,10 +3,44 @@
 
 {% block div %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/PucAgora/SiuniMais.css' %}">
-<div>SIUNI +</div>
+<div id="SiuniMaisContainer">
+    <h1>SIUNI +</h1>
+
+    <!-- Formulário para adicionar posts -->
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" placeholder="Digite o título" required>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" placeholder="Digite a descrição" required></textarea>
+        </div>
+        <button type="submit">Adicionar Post</button>
+    </form>
+
+    <!-- Grade de posts -->
+    <div id="postsGrid">
+        {% for post in posts %}
+            <div class="post">
+                <h2>{{ post.titulo }}</h2>
+                <p>{{ post.descricao }}</p>
+                <p class="post-meta">Criado em {{ post.data_criacao|date:"d/m/Y H:i" }}</p>
+                <div class="post-actions">
+                    <form method="post" action="{% url 'editar_post' post.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-edit">Editar</button>
+                    </form>
+                    <form method="post" action="{% url 'apagar_post' post.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-delete">Apagar</button>
+                    </form>
+                </div>
+            </div>
+        {% empty %}
+            <p>Nenhum post criado ainda.</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
-
-
-
-
-

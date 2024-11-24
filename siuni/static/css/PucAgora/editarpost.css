@@ -1,0 +1,63 @@
+#ABA-SIUNI {
+    background-color: var(--MateriaBackgroundColor);
+}
+
+#EditarPostContainer {
+    padding: 20px;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #1a1a1a; /* Fundo escuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+#EditarPostContainer h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff; /* Azul do título */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333; /* Fundo dos campos */
+    color: white; /* Cor do texto */
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 100px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}

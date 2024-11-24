@@ -15,6 +15,8 @@ urlpatterns = [
 
 
     path('modal/<str:modal_name>/', carregar_modal, name='carregar_modal'),
+    path('editar_post/<int:post_id>/', editar_post, name='editar_post'),
+    path('apagar_post/<int:post_id>/', apagar_post, name='apagar_post'),
     
     path('', homepage, name="homepage"), #? first parameter is the url, second is what function will be runned at the url, and the third is the internal name of the link used to reference the link regardless of its url domain
 ]
