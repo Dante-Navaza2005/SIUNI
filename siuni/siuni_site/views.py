@@ -29,7 +29,7 @@ def fazer_login(request):
         matricula = request.POST.get('matricula')
         senha = request.POST.get('senha')
 
-        if matricula is '' or senha is '' :
+        if matricula == '' or senha == '' :
             request.session['error'] = 'Preencha os campos corretamente'
             return redirect('fazer_login')
 
@@ -41,6 +41,8 @@ def fazer_login(request):
             chrome_options.add_argument("--headless")
             chrome_options.add_argument("--no-sandbox")
             chrome_options.add_argument("--disable-gpu")
+            chrome_options.add_argument(f'--proxy-server={None}')
+
 
             try:
                 # Inicia o ChromeDriver automaticamente usando webdriver-manager
