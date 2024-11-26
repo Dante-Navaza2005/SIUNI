@@ -103,7 +103,8 @@ div#TituloAreaDeInformacoes {
 
 .InformacaoFixa {
     user-select: none;
-    font-weight: 500; color: #ffc72b;
+    font-weight: 500; color: #9d7e2a;
+    font-size: 1.3rem;
     box-sizing: border-box; 
     margin: 20px 0px;
     cursor: pointer;

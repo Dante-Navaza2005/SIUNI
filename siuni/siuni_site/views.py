@@ -14,6 +14,11 @@ from django.template.loader import render_to_string
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+
+
 
 
 
@@ -22,7 +27,6 @@ from .utils import *
 
 def fazer_login(request):
     error = None
-    context = {}
 
     #! FAZENDO O LOGIN
     if request.method == 'POST':
@@ -37,16 +41,10 @@ def fazer_login(request):
 
         if not user :
             # Configuração do Selenium para login automático
-            chrome_options = Options()
-            chrome_options.add_argument("--headless")
-            chrome_options.add_argument("--no-sandbox")
-            chrome_options.add_argument("--disable-gpu")
-            chrome_options.add_argument(f'--proxy-server={None}')
-
 
             try:
                 # Inicia o ChromeDriver automaticamente usando webdriver-manager
-                driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+                driver = webdriver.Chrome()
 
                 preencher_login(driver, matricula, senha)
                 
@@ -69,7 +67,27 @@ def fazer_login(request):
                     #! LOGIN FEITO COM SUCESSO
                     nome = driver.find_element(By.XPATH, "//li[@id='liUsuarioMatricula']//span[@id='lblNomeUsuario']/b").text
 
+                    #!ENTRANDO EM SITUACAO ACADEMICA
+                    element = driver.find_element(By.XPATH, "//a[@title='Situação Acadêmica']")
+
+                    # Clicar no elemento
+                    element.click()
+                    sleep(1)
+
+                    #?PEGANDO PERIODO
+                    select_element = driver.find_element(By.ID, "ddlPeriodo")
+                    dropdown = Select(select_element)
+                    
+                    sleep(1)
+
+                    # Obter a quantidade de opções no dropdown
+                    periodo = len(dropdown.options) - 1
+
+                    #curso = driver.find_element(By.ID, "tbcCurso").text
+
                     usuario, created = Usuario.objects.get_or_create(nome_usuario=nome, user=user, matricula=matricula,tipo_de_usuario='Aluno')
+
+                    aluno, created = Aluno.objects.get_or_create(usuario=usuario, numero_periodo=periodo)
 
                     driver.quit()
                     return redirect('/pucAgora/feed')
@@ -80,7 +98,7 @@ def fazer_login(request):
                     return redirect('fazer_login')
 
             #! PROBLEMA NO DRIVER
-            except (NoSuchElementException, WebDriverException):
+            except (WebDriverException):
                 request.session['error'] = 'Erro ao realizar o login. Teste mais tarde ou em outro browser.'
                 return redirect('fazer_login')
         else :
@@ -97,37 +115,45 @@ def fazer_login(request):
 
 @login_required
 def perfil(request) :
-    context = {}
+    aluno = request.aluno
+    context = {'aluno': aluno}
     return render(request, "Perfil.html", context)
 
 @login_required
 def calendario(request) :
-    context = {}
+    aluno = request.aluno
+    context = {'aluno': aluno}
     return render(request, "Calendario.html", context)
 @login_required
 def meu_curso(request) :
-    context = {}
+    aluno = request.aluno
+    context = {'aluno': aluno}
     return render(request, "MeuCurso.html", context)
 
 @login_required
 def puc_agora(request) :
-    context = {}
+    aluno = request.aluno
+    context = {'aluno': aluno}
     return render(request, "PucAgora.html", context)
 
 
 @login_required
 def feed(request) :
-    usuario = request.usuario
-    context = {'usuario': usuario}
+    aluno = request.aluno
+    noticia = Noticia.objects.all()
+    context = {'aluno': aluno, 'noticias': noticia}
     return render(request, "PucAgora/Feed.html", context)
 
 @login_required
 def mapa(request) :
-    context = {}
+    aluno = request.aluno
+    context = {'aluno': aluno}
     return render(request, "PucAgora/Mapa.html", context)
 
 @login_required
 def siuni_mais(request) :
+    usuario = request.usuario
+    context = {'usuario': usuario}
     # Obtém os posts do usuário atual
     posts = Post.objects.filter(usuario=request.usuario)
 
@@ -139,8 +165,9 @@ def siuni_mais(request) :
         if titulo and descricao:
             Post.objects.create(usuario=request.usuario, titulo=titulo, descricao=descricao)
             return redirect('siuni_mais')  # Redireciona após criar o post
-
-    return render(request, 'PucAgora/SiuniMais.html', {'posts': posts})
+    
+    context.update({'posts': posts})
+    return render(request, 'PucAgora/SiuniMais.html', context)
 
 
 @login_required
@@ -177,6 +204,8 @@ def homepage(request):
 
 @login_required
 def carregar_modal(request, modal_name):
+    usuario = request.usuario
+    context = {'usuario': usuario}
     try:
         # Contexto para o modal (adicione as variáveis que desejar)
         context = {
@@ -210,6 +239,8 @@ def custom_404_view(request, exception):
 
 @login_required
 def apagar_post(request, post_id):
+    usuario = request.usuario
+    context = {'usuario': usuario}
     post = get_object_or_404(Post, id=post_id, usuario=request.usuario)
     if request.method == 'POST':
         post.delete()
@@ -218,6 +249,8 @@ def apagar_post(request, post_id):
 
 @login_required
 def editar_post(request, post_id):
+    usuario = request.usuario
+    context = {'usuario': usuario}
     post = get_object_or_404(Post, id=post_id, usuario=request.usuario)
     if request.method == 'POST':
         titulo = request.POST.get('titulo')

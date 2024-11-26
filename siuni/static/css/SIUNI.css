@@ -58,7 +58,7 @@ body {
 #BarraReal {
     height: 100%; width: 100%;
     position: relative;
-    border-right: solid rgb(32, 32, 32) 1px;
+    border-right: solid rgba(85, 70, 70, 0.271) 1px;
     box-sizing: border-box;
     display: flex; flex-direction: column; align-items: stretch;
     }

@@ -17,14 +17,18 @@
             <label for="descricao">Descrição:</label>
             <textarea id="descricao" name="descricao" placeholder="Digite a descrição" required></textarea>
         </div>
-        <button type="submit">Adicionar Post</button>
+        <center>
+            <button id="submit-button" type="submit">Adicionar Post</button>
+        </center>
     </form>
+
+    <hr>
 
     <!-- Grade de posts -->
     <div id="postsGrid">
         {% for post in posts %}
             <div class="post">
-                <h2>{{ post.titulo }}</h2>
+                <h2 id="post-titulo">{{ post.titulo }}</h2>
                 <p>{{ post.descricao }}</p>
                 <p class="post-meta">Criado em {{ post.data_criacao|date:"d/m/Y H:i" }}</p>
                 <div class="post-actions">

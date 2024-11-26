@@ -61,7 +61,8 @@ div#Feed::-webkit-scrollbar {
 
 .NotFonte {
     font-size: 0.9rem;
-    color: #08c5ff;
+    color: var(--FontColor);
+    font-weight: bolder;
 
     }
 

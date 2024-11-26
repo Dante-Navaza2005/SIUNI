@@ -188,4 +188,7 @@ class Post(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.titulo} ({self.user.username})"
+        # Corrigir para usar `self.usuario` e acessar o nome de usuário
+        if self.usuario and self.usuario.user:
+            return f"{self.titulo} ({self.usuario.user.username})"
+        return self.titulo

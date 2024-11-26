@@ -6,33 +6,20 @@
 <script type="text/javascript" src="{% static 'js/Noticia/Noticia.js' %}"></script>
 
 <div id="Feed">
+    {% for noticia in noticias %}
     <div class="Noticia" data-testid="0" onclick="abrirNoticia(this)">
         <div class="NotContent">
             <div class="NotEsq">
-                <img src="{% static 'images/Noticias/Noticia1.png' %}" alt="Noticia" class="NotImg">
+                <img src="{{ noticia.imagem.url }}" alt="Noticia" class="NotImg">
             </div>
         
             <div class="NotDir">
-                <div class="NotTitulo">Como matar fácil o hacker no frifas</div>
-                <div class="NotDescricao">Adicione um comentário...blablabla blabla blabblabla blablabla blabla</div>
-                <div class="NotFonte">{{ usuario.nome_usuario }}</div>
+                <div class="NotTitulo">{{ noticia.titulo }}</div>
+                <div class="NotDescricao">{{ noticia.legenda }}</div>
+                <div class="NotFonte">{{ noticia.autor }}</div>
             </div>
         </div>
     </div>
-
-
-    <div class="Noticia" data-testid="0" onclick="abrirNoticia(this)">
-        <div class="NotContent">
-            <div class="NotEsq">
-                <img src="{% static 'images/Noticias/Noticia1.png' %}" alt="Noticia" class="NotImg">
-            </div>
-        
-            <div class="NotDir">
-                <div class="NotTitulo">Como matar fácil o hacker no frifas</div>
-                <div class="NotDescricao">Adicione um comentário...blablabla blabla blabblabla blablabla blabla</div>
-                <div class="NotFonte">Moranguinhos da PUC</div>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 {% endblock %}

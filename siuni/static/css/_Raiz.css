@@ -31,9 +31,9 @@
     {
 
     /* MAIN =============================================== */
-    --BackgroundColor: white;
-    --FontColor: rgb(0, 0, 0);
-    --FontWeight: 400;
+    --BackgroundColor: #DBD9D5;
+    --FontColor: rgb(91, 80, 80);
+    --FontWeight: bolder;
     --HoverItemBackgroundColor: rgba(0, 0, 0, 0.1);
     
     /* OPTIONS ============================================ */
@@ -42,7 +42,7 @@
     
     
     /* PUC AGORA ========================================== */
-    --BackgroundColorB: #dfdfdf;
+    --BackgroundColorB: #DBD9D5;
     --DescricaoColor: rgb(0, 0, 0);
 
 
@@ -51,7 +51,7 @@
     
 
 
-    --MateriaBackgroundColor : rgb(173, 215, 255);
+    --MateriaBackgroundColor : rgba(255, 198, 43, 0.533);
 
 
     }

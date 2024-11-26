@@ -51,7 +51,7 @@
     }
 
 #MeuCursoAreaGradeInfosSemestre {
-    color: #ffffff;
+    color: var(--FontColor);
     font-size: 1.8rem;
     font-weight: 400;
     }
@@ -77,7 +77,7 @@
     }
 
 .CelulaDiaDaSemana {
-    color: #38b6ff;
+    color: var(--MateriaBackgroundColor);
     font-size: 1.5rem;
     font-weight: 700;
     }

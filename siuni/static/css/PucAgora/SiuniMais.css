@@ -23,11 +23,11 @@
 
 /* Formulário */
 form {
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 40px;
 }
 
 /* Campos de entrada */
@@ -35,7 +35,7 @@ input, textarea {
     width: 100%;
     padding: 12px 15px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc74;
     border-radius: 5px;
     box-sizing: border-box;
     background-color: var(--MateriaBackgroundColor); /* Fundo dos campos */
@@ -44,8 +44,8 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: var(--MateriaBackgroundColor);
+    box-shadow: 0 14px 20px var(--MateriaBackgroundColor);
     outline: none;
 }
 
@@ -56,7 +56,7 @@ textarea {
 
 /* Botão de envio */
 button {
-    background-color: #007bff;
+    background-color: #23860f;
     color: white;
     padding: 12px 15px;
     font-size: 16px;
@@ -68,6 +68,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    
     gap: 8px;
 }
 
@@ -85,11 +86,11 @@ button:hover {
 
 /* Post */
 .post {
-    border: 1px solid #ccc; /* Exemplo de borda */
+    border: 1px solid #cccccc79; /* Exemplo de borda */
     border-radius: 10px;
     padding: 15px;
     background-color: var(--MateriaBackgroundColor);
-    color: white;
+    color: var(--FontColor);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
     /* Configurar barra de rolagem */
@@ -103,12 +104,13 @@ button:hover {
 }
 
 .post::-webkit-scrollbar-thumb {
-    background-color: #007bff; /* Cor do "polegar" da barra */
+    background-color: var(--FontColor); /* Cor do "polegar" da barra */
     border-radius: 10px;
 }
 
 .post::-webkit-scrollbar-thumb:hover {
-    background-color: #0056b3; /* Cor ao passar o mouse */
+    background-color: var(--FontColor);
+    filter: brightness(0.4); /* Cor ao passar o mouse */
 }
 
 .post h2 {
@@ -137,23 +139,36 @@ button:hover {
 
 .btn-edit, .btn-delete {
     background-color: transparent;
-    border: 1px solid #ccc;
+    margin-top: 20px;
+    border: 2px solid #ccc;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 12px;
-    color: white;
+    color: var(--FontColor);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-edit:hover {
     background-color: #007bff;
-    color: white;
+    color: wheat;
     box-shadow: 0 2px 5px rgba(0, 123, 255, 0.5);
 }
 
 .btn-delete:hover {
     background-color: red;
-    color: white;
+    color: wheat;
     box-shadow: 0 2px 5px rgba(255, 0, 0, 0.5);
+}
+
+#submit-button {
+    margin-bottom: 30px;
+}
+
+#postsGrid {
+    margin-top: 40px;
+}
+
+#post-titulo {
+    font-size: 1.4rem;
 }
